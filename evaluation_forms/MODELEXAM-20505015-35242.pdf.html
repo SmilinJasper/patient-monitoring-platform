@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:600&display=swap' rel='stylesheet'>
+    <script src='https://kit.fontawesome.com/a81368914c.js'></script>
+    <script defer src='../js/update_total_marks.js'></script>
+    <script defer src='../js/update_page.js'></script> 
+    <link href='../css/style.css' rel='stylesheet'>
+    <title>Evaluation Form</title>
+</head>
+
+<body>
+
+<nav>
+    <form>
+        <ul class='nav-bar'>
+            <li><button type='submit' formaction='../logout_to_student_login.php'>Student Login</button></li>
+            <li><a class='active' href='../staff_login.php'>Staff Login</a></li>
+            <li><button type='submit' formaction='../logout_to_admin_login.php'>Admin Login</button></li>
+            <li class='nav-item-right'><button type='submit' formaction='../logout_to_staff_login.php'>Logout</button></li>
+        </ul>
+    </form>
+</nav>
+
+<input type='number' name='id' id='id' value ='32' readonly class='paper-id'>
+
+<main>
+<img class='wave' src='../img/wave.png'>
+
+<a class='button back-button' href='staff_dashboard_1.php'>Back</a>
+
+<div class = 'evaluation-page-wrapper'>
+<div class='embedded-pdf-container'>
+    <embed src='../uploads/MODELEXAM-20505015-35242.pdf' width='100%' height='100%' title='answersheet'></embed>
+</div>
+
+<div class='evaluation-form-container'>
+        <table class='styled-table evaluation-table'>
+            <tr>
+                <th>Questions</th>
+                <th>Out of</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td class='question-no'>1</td>
+                <td>10</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='10'></td>
+            </tr>
+            <tr>
+                <td class='question-no'>2</td>
+                <td>10</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='10'></td>
+            </tr>
+            <tr>
+                <td class='question-no'>3</td>
+                <td>10</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='10'></td>
+            </tr>
+            <tr>
+                <td class='question-no'>4</td>
+                <td>10</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='10'></td>
+            </tr>
+            <tr>
+                <td class='question-no'>5.1</td>
+                <td>5</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='5'></td>
+            </tr>
+            <tr>
+                <td class='question-no'>5.2</td>
+                <td>5</td>
+                <td><input type='number' class='section-marks-input' value='0' min='0' max='5'></td>
+            </tr>
+        </table>
+        <div class ='finish-paper-form-container'>
+        <form action='../send_marks.php?id=32' method='POST'>
+        <div class='total-marks-container'>
+            <label for='total-marks'>    
+Total Score (Out of 50):            
+</label>
+            <input id='total-marks' name='total-marks' type='number' value='0' readonly min='0' max='30' class='total-marks'>
+            </div>
+            <div class='finalize-paper-buttons-container'>
+            <input id='finish-paper' type='submit' value='Finish Paper' class='button'>
+            <a href='../delete.php?name=MODELEXAM-20505015-35242.pdf&id=32' class='button reject-paper-button'>Reject Paper</a>
+        </form>
+        </div>
+            </div>
+            </div>
+            </body>
+</main>
+</html>
