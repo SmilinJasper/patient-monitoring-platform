@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>    
                     <div class="div">
                         <h5>Name</h5>
-                        <input id="input-name" name="name" type="text" class="input input-username">
+                        <input id="input-name" name="name" type="text" class="input input-username" required>
                     </div>
                 </div>
 
@@ -191,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="options">
 
                         <div>
-                            <input id="mbbs" name="mbbs" value="MBBS" type="checkbox">
+                            <input id="mbbs" name="mbbs" value="MBBS" type="checkbox" required>
                             <label for="mbbs">MBBS</label>
                         </div>
                        
@@ -216,9 +216,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="values">
-                        <input id="input-experience-years" name="experience-years" type="number">
+                        <input id="input-experience-years" name="experience-years" type="number" min="0">
                         <label for="input-experience-years">Years</label>
-                        <input id="input-experience-months" name="experience-months" type="number">                    
+                        <input id="input-experience-months" name="experience-months" type="number" required max="11" min="0">                    
                         <label for="input-experience-months">Months</label>
                     </div>
                 
