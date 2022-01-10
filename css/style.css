@@ -24,6 +24,7 @@ button {
     position: fixed;
     top: 0;
     background-color: #1e6ae1;
+    z-index: 1;
 }
 
 li {
@@ -94,6 +95,7 @@ header.center {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 7rem;
     padding: 0 2rem;
+    overflow: auto;
 }
 
 .img {
@@ -104,6 +106,7 @@ header.center {
 }
 
 .login-content {
+    margin-top: 5em;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -117,6 +120,9 @@ header.center {
 
 form.login-form {
     width: 360px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 25px;
 }
 
 .login-content img {
@@ -129,17 +135,21 @@ form.login-form {
     font-size: 2.9rem;
 }
 
+.login-error-message {
+    margin-bottom: 8px;
+    color: red;
+}
+
 .login-content .input-div {
     position: relative;
     display: grid;
     grid-template-columns: 7% 93%;
-    margin: 25px 0;
     padding: 5px 0;
     border-bottom: 2px solid #d9d9d9;
 }
 
 .login-content .input-div.one {
-    margin-top: 0;
+    margin-top: -25px;
 }
 
 .i {
@@ -224,6 +234,8 @@ form.login-form {
 .input-div-checkbox {
     display: grid;
     place-items: flex-start;
+    padding: 5px 0px 10px 5px;
+    border-bottom: 2px solid #d9d9d9;
 }
 
 .input-div-checkbox h5,
@@ -272,6 +284,11 @@ input[type=number] {
 .values {
     display: flex;
     color: #999;
+    padding: 8px;
+}
+
+.values * {
+    margin-right: 8px;
 }
 
 .values input {
@@ -280,9 +297,17 @@ input[type=number] {
     border-bottom: 1px solid #999;
 }
 
-.login-error-message {
-    margin-bottom: 8px;
-    color: red;
+.values input:focus {
+    outline: 1px solid #d9d9d9;
+}
+
+@supports selector(:focus-visible) {
+    .values input:focus {
+        outline: none;
+    }
+    .values input:focus-visible {
+        outline: 1px solid #d9d9d9;
+    }
 }
 
 .btn {

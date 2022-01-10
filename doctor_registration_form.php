@@ -171,13 +171,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <div class="input-div one">
+                <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>    
                     <div class="div">
                         <h5>Name</h5>
-                        <input id="input-name" name="name" type="password" class="input input-username">
+                        <input id="input-name" name="name" type="text" class="input input-username">
                     </div>
                 </div>
 
@@ -216,10 +216,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="values">
-                        <label for="input-experience-years">Years</label>
                         <input id="input-experience-years" name="experience-years" type="number">
-                        <label for="input-experience-months">Months</label>
+                        <label for="input-experience-years">Years</label>
                         <input id="input-experience-months" name="experience-months" type="number">                    
+                        <label for="input-experience-months">Months</label>
                     </div>
                 
                 </div>
