@@ -77,8 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: doctor_added.html");
+                echo "Successfully added doctor credentials!";
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -88,9 +87,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Close connection
-    mysqli_close($conn);
+    // Get doctor profile details in the databse
+    $doctor_id_column = mysqli_query($conn, "SELECT max(id) FROM doctor_credentials");
+    $doctor_id_array = mysqli_fetch_array($doctor_id_column);
+    $doctor_id = $doctor_id_array[0];
+    $doctor_name = $_POST["doctor-name"];
+    $doctor_credentials = $_POST["credentials"];
+    $doctor_credentials = join(", ", $doctor_credentials);
+    $doctor_experience_years = $_POST["experience-years"];
+    $doctor_experience_months = $_POST["experience-months"];
+    $doctor_experience = "";
+    
+    if($doctor_experience_years != "" && $doctor_experience_months !="0") {
+
+        if($doctor_experience_years > 1 && $doctor_experience_months > 1) {
+            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " months";
+        }
+
+        if($doctor_experience_years > 1 && $doctor_experience_months == 1) {
+            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " month";
+        }
+
+        if($doctor_experience_years == 1 && $doctor_experience_months > 1) {
+            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " months";
+        }
+
+        if($doctor_experience_years == 1 && $doctor_experience_months == 1) {
+            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " month";
+        }
+
+    }
+
+    if($doctor_experience_years != "" && $doctor_experience_months == 0){
+
+        if($doctor_experience_years == 1) {
+            $doctor_experience = $doctor_experience_years . " Year";
+        }
+
+        if($doctor_experience_years > 1) {
+            $doctor_experience = $doctor_experience_years . " Years";
+        }
+
+    }
+
+    if($doctor_experience_years == "" && $doctor_experience_months != ""){
+
+        if($doctor_experience_months == 1) {
+            $doctor_experience = $doctor_experience_months . "month";
+        } else {
+            $doctor_experience = $doctor_experience_months . "months";            
+        }
+
+    }
+
+    $sql = "INSERT INTO doctor_profile (id, name, credentials, experience) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience')";
+
+    // Save doctor profile details in the databse
+    if (mysqli_query($conn, $sql)) {
+        // Redirect to login page
+        header("location: doctor_added.html");
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
 }
+
+// Close connection
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -177,7 +239,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>    
                     <div class="div">
                         <h5>Name</h5>
-                        <input id="input-name" name="name" type="text" class="input input-username" required>
+                        <input id="input-name" name="doctor-name" type="text" class="input input-username" required>
                     </div>
                 </div>
 
@@ -191,17 +253,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="options">
 
                         <div>
-                            <input id="mbbs" name="mbbs" value="MBBS" type="checkbox" required>
+                            <input id="mbbs" name="credentials[]" value="MBBS" type="checkbox" required>
                             <label for="mbbs">MBBS</label>
                         </div>
                        
                         <div>
-                            <input id="md" name="md" value="MD" type="checkbox">
+                            <input id="md" name="credentials[]" value="MD" type="checkbox">
                             <label for="md">MD</label>
                         </div>
 
                         <div>
-                            <input id="dm" name="dm" value="DM" type="checkbox">
+                            <input id="dm" name="credentials[]" value="DM" type="checkbox">
                             <label for="dm">DM</label>
                         </div>
 
@@ -216,7 +278,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="values">
-                        <input id="input-experience-years" name="experience-years" type="number" min="0">
+                        <input id="input-experience-years" name="experience-years" type="number" min="1">
                         <label for="input-experience-years">Years</label>
                         <input id="input-experience-months" name="experience-months" type="number" required max="11" min="0">                    
                         <label for="input-experience-months">Months</label>
