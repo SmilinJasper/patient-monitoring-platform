@@ -65,7 +65,7 @@
         while ($row = mysqli_fetch_array($result)) {
         echo "  
        <tr>  
-         <td>" . $row['doctor_id'] . "</td>  
+         <td>" . $row['id'] . "</td>  
          <td>" . $row['name'] . "</td>  
          <td>" . $row['credentials'] . "</td>  
          <td>" . $row['experience'] . "</td>  
