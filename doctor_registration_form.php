@@ -101,19 +101,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($doctor_experience_years != "" && $doctor_experience_months !="0") {
 
         if($doctor_experience_years > 1 && $doctor_experience_months > 1) {
-            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " months";
+            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Months";
         }
 
         if($doctor_experience_years > 1 && $doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " month";
+            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Month";
         }
 
         if($doctor_experience_years == 1 && $doctor_experience_months > 1) {
-            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " months";
+            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Months";
         }
 
         if($doctor_experience_years == 1 && $doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " month";
+            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Month";
         }
 
     }
@@ -133,9 +133,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($doctor_experience_years == "" && $doctor_experience_months != ""){
 
         if($doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_months . "month";
+            $doctor_experience = $doctor_experience_months . " Month";
         } else {
-            $doctor_experience = $doctor_experience_months . "months";            
+            $doctor_experience = $doctor_experience_months . " Months";            
         }
 
     }
