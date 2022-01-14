@@ -19,7 +19,7 @@
             <ul class="nav-bar">
                 <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
                 <li><button type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
-                <li><a class="active" href="admin_login.php">Admin Login</a></li>
+                <li><button class="active" type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
                 <li class="nav-item-right"><button type="submit" formaction="logout_to_admin_login.php">Logout</button></li>
             </ul>
         </form>
