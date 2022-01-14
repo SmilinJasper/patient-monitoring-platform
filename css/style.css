@@ -63,7 +63,7 @@ a:hover,
     cursor: pointer;
 }
 
-a.active {
+button.active {
     background: #eee;
 }
 
