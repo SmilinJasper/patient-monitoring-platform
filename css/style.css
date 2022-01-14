@@ -601,13 +601,13 @@ div.remaining-paper-count {
     margin-top: 10px;
 }
 
-.reject-paper-button {
+.remove-account-button {
     width: fit-content;
     border: 1px solid #ca0606;
     color: black;
 }
 
-.reject-paper-button:hover {
+.remove-account-button:hover {
     background: #ca0606;
 }
 

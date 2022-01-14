@@ -57,6 +57,7 @@
                         <th>Name</th>
                         <th>Credentials</th>
                         <th>Experience</th>
+                        <th>Remove Account</th>
                     </tr>
                     <?php
 
@@ -68,7 +69,10 @@
          <td>" . $row['id'] . "</td>  
          <td>" . $row['name'] . "</td>  
          <td>" . $row['credentials'] . "</td>  
-         <td>" . $row['experience'] . "</td>  
+         <td>" . $row['experience'] . "</td>
+         <td>
+            <a class='button remove-account-button' href='delete.php?id=" . $row['id'] . "'>Remove</a>
+        </td>      
        </tr>  
         ";
                         $index++;
