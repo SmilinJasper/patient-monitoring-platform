@@ -98,57 +98,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doctor_experience_months = $_POST["experience-months"];
     $doctor_experience = "";
     
-    if($doctor_experience_years != "" && $doctor_experience_months !="0") {
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+        
+        if($doctor_experience_years != "" && $doctor_experience_months !="0") {
 
-        if($doctor_experience_years > 1 && $doctor_experience_months > 1) {
-            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Months";
+            if($doctor_experience_years > 1 && $doctor_experience_months > 1) {
+                $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Months";
+            }
+
+            if($doctor_experience_years > 1 && $doctor_experience_months == 1) {
+                $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Month";
+            }
+
+            if($doctor_experience_years == 1 && $doctor_experience_months > 1) {
+                $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Months";
+            }
+
+            if($doctor_experience_years == 1 && $doctor_experience_months == 1) {
+                $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Month";
+            }
+
         }
 
-        if($doctor_experience_years > 1 && $doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Month";
+        if($doctor_experience_years != "" && $doctor_experience_months == 0){
+
+            if($doctor_experience_years == 1) {
+                $doctor_experience = $doctor_experience_years . " Year";
+            }
+
+            if($doctor_experience_years > 1) {
+                $doctor_experience = $doctor_experience_years . " Years";
+            }
+
         }
 
-        if($doctor_experience_years == 1 && $doctor_experience_months > 1) {
-            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Months";
+        if($doctor_experience_years == "" && $doctor_experience_months != ""){
+
+            if($doctor_experience_months == 1) {
+                $doctor_experience = $doctor_experience_months . " Month";
+            } else {
+                $doctor_experience = $doctor_experience_months . " Months";            
+            }
+
         }
 
-        if($doctor_experience_years == 1 && $doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Month";
-        }
+        $sql = "INSERT INTO doctor_profile (id, name, credentials, experience) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience')";
 
+        // Save doctor profile details in the databse
+        if (mysqli_query($conn, $sql)) {
+            // Redirect to login page
+            header("location: doctor_added.html");
+            } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+        
     }
-
-    if($doctor_experience_years != "" && $doctor_experience_months == 0){
-
-        if($doctor_experience_years == 1) {
-            $doctor_experience = $doctor_experience_years . " Year";
-        }
-
-        if($doctor_experience_years > 1) {
-            $doctor_experience = $doctor_experience_years . " Years";
-        }
-
-    }
-
-    if($doctor_experience_years == "" && $doctor_experience_months != ""){
-
-        if($doctor_experience_months == 1) {
-            $doctor_experience = $doctor_experience_months . " Month";
-        } else {
-            $doctor_experience = $doctor_experience_months . " Months";            
-        }
-
-    }
-
-    $sql = "INSERT INTO doctor_profile (id, name, credentials, experience) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience')";
-
-    // Save doctor profile details in the databse
-    if (mysqli_query($conn, $sql)) {
-        // Redirect to login page
-        header("location: doctor_added.html");
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
 }
 
 // Close connection
