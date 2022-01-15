@@ -42,7 +42,7 @@
         include "database.php";
 
         //Get all info from database table
-        $sql = "SELECT * FROM doctor_profile";
+        $sql = "SELECT * FROM doctor_profiles";
         $result = mysqli_query($conn, $sql);
 
         ?>
