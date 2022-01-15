@@ -1,29 +1,4 @@
-<?php
-
-// Include database file
-include "database.php";
-
-//Get total no.of uploaded papers
-$result = mysqli_query($conn, "SELECT count(1) FROM student_exam_results");
-$row = mysqli_fetch_array($result);
-
-$total = $row[0];
-
-//Get no.of checked papers
-$result = mysqli_query($conn, "SELECT count(*) from student_exam_results where is_checked='Yes'");
-$row = mysqli_fetch_array($result);
-
-$checked = $row[0];
-
-//Close connection
-mysqli_close($conn);
-
-//Get no.of remaining papers
-$remaining = $total - $checked;
-?>
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <title>Staff Dashboard</title>
@@ -36,20 +11,19 @@ $remaining = $total - $checked;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<!--Navigation bar-->
+<nav>
+    <form>
+        <ul class="nav-bar">
+            <li><button type="submit" formaction="logout_to_student_login.php">Student Login</button></li>
+            <li><a class="active" href="staff_login.php">Staff Login</a></li>
+            <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
+            <li class="nav-item-right"><button type="submit" formaction="logout_to_staff_login.php">Logout</button></li>
+        </ul>
+    </form>
+</nav>
+
 <body>
-
-    <!--Navigation bar-->
-    <nav>
-        <form>
-            <ul class="nav-bar">
-                <li><button type="submit" formaction="logout_to_student_login.php">Student Login</button></li>
-                <li><a class="active" href="staff_login.php">Staff Login</a></li>
-                <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
-                <li class="nav-item-right"><button type="submit" formaction="logout_to_staff_login.php">Logout</button></li>
-            </ul>
-        </form>
-    </nav>
-
     <!--Background image-->
     <img class="wave" src="img/wave.png">
 
@@ -61,50 +35,61 @@ $remaining = $total - $checked;
             <h1>DASHBOARD</h1>
         </header>
 
-        <!--Answersheets info-->
-        <div class="answersheets-info-container">
-            <header>
-                <h1>COMPUTER SCIENCE</h1>
-            </header>
+        <!--Back button-->
+        <a class="button back-button" href="staff_dashboard_1.php">Back</a>
 
-            <!--Course info-->
-            <div class="course-info-container">
-                <div class="course-info">
-                    <label>
-                        Course:
-                    </label>
-                    <input type="text" name="dummy1" value="B.Sc" readonly />
-                </div>
-                <div class="course-info">
-                    <label>
-                        Specialization:
-                    </label>
-                    <input type="text" name="dummy2" value="-" readonly />
-                </div>
-            </div>
+        <?php
 
-            <!--Paper count info-->
-            <div class="paper-count-container">
-                <div class="uploaded-paper-count">
-                    <p>Uploaded</p>
-                    <p><?php echo $total; ?></p>
-                </div>
-                <div class="checked-paper-count">
-                    <p>Checked</p>
-                    <p><?php echo $checked; ?></p>
-                </div>
-                <div class="remaining-paper-count">
-                    <p>Remaining</p>
-                    <p><?php echo $remaining; ?></p>
-                </div>
-            </div>
+        include "database.php";
 
-            <!--Check papers button-->
-            <div class="check-papers-button">
-                <a href="staff_dashboard_2.php" class="button">Check Papers</a>
-            </div>
+        //Get all info from database table
+        $sql = "SELECT * FROM student_exam_results";
+        $result = mysqli_query($conn, $sql);
+
+        //Scan directory for uploads
+        $files = chdir("uploads");
+        array_multisort(array_map('filemtime', ($files = glob("*.{pdf}", GLOB_BRACE))), SORT_DESC, $files);
+        $orderedFiles = array_reverse($files);
+
+        ?>
+
+        <br />
+
+        <!--Table with answersheets info-->
+        <div class="table-responsive">
+            <center>
+                <table class="styled-table">
+                    <tr>
+                        <th>Assignment Id</th>
+                        <th>Check Answersheet</th>
+                        <th>Is Checked</th>
+                        <th>Marks</th>
+                        <th>Attendance</th>
+                    </tr>
+                    <?php
+
+                    //Display all info from database table and link to answersheet
+                    $index = 0;
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "  
+       <tr>  
+         <td>" . $row['id'] . "</td>  
+         <td><a class='button' href='evaluation_forms/" . $orderedFiles[$index] . ".html'>Check Answersheet</a></td>
+         <td>" . $row['is_checked'] . "</td>  
+         <td>" . $row['marks'] . "</td>  
+         <td>" . $row['attendance'] . "</td>  
+       </tr>  
+        ";
+                        $index++;
+                    }
+
+                    // Close connection 
+                    mysqli_close($conn);
+
+                    ?>
+                </table>
+            </center>
         </div>
-
     </main>
 </body>
 
