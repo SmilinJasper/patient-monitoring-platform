@@ -160,7 +160,7 @@ form.login-form {
 }
 
 .login-error-message {
-    margin-bottom: 8px;
+    margin-bottom: 1em;
     color: red;
 }
 
