@@ -107,9 +107,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!--Navigation bar-->
     <nav>
         <ul class="nav-bar">
-            <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
-            <li><button type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
-            <li><button class="active" type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
+            <li><a href="index.php">Patient Login</a></li>
+            <li><a href="doctor_login.php">Doctor Login</a></li>
+            <li><a href="admin_login.php">Admin Login</a></li>
         </ul>
     </nav>
 
