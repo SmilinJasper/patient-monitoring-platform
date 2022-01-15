@@ -4,5 +4,5 @@
 require_once "logout.php";
 
 // Redirect to login page
-header("location: staff_login.php");
+header("location: doctor_login.php");
 exit;
