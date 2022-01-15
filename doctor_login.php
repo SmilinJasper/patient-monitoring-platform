@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: staff_dashboard_1.php");
+    header("location: doctor_dashboard.php");
     exit;
 }
 
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate credentials
     if (empty($username_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM staff_login_credentials WHERE username = ?";
+        $sql = "SELECT id, username, password FROM doctor_credentials WHERE username = ?";
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             // Redirect user to welcome page
-                            header("location: staff_dashboard_1.php");
+                            header("location: doctor_dashboard.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -107,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!--Navigation bar-->
     <nav>
         <ul class="nav-bar">
-            <li><a href="index.php">Student Login</a></li>
-            <li><a class="active" href="staff_login.php">Staff Login</a></li>
+            <li><a href="index.php">Patient Login</a></li>
+            <li><a class="active" href="doctor_login.php">Doctor Login</a></li>
             <li><a href="admin_login.php">Admin Login</a></li>
         </ul>
         </div>

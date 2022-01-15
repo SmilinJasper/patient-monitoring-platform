@@ -87,10 +87,6 @@ a:hover,
     cursor: pointer;
 }
 
-button.active {
-    background: #eee;
-}
-
 .nav-item-right {
     margin-left: auto;
 }
@@ -98,6 +94,11 @@ button.active {
 .page-wrapper {
     margin: 8px;
     margin-top: 37px;
+}
+
+a.active,
+button.active {
+    background: #eee;
 }
 
 header.center {
