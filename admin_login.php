@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul class="nav-bar">
             <li><a href="index.php">Patient Login</a></li>
             <li><a href="doctor_login.php">Doctor Login</a></li>
-            <li><a href="admin_login.php">Admin Login</a></li>
+            <li><a class="active" href="admin_login.php">Admin Login</a></li>
         </ul>
     </nav>
 
