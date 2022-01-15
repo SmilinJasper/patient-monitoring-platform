@@ -70,7 +70,7 @@
          <td>" . $row['name'] . "</td>  
          <td>" . $row['credentials'] . "</td>  
          <td>" . $row['experience'] . "</td>
-         <td>
+         <td class='remove-account-cell'>
             <a class='button remove-account-button' href='delete.php?id=" . $row['id'] . "'>Remove</a>
         </td>      
        </tr>  

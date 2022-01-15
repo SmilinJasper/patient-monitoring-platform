@@ -15,6 +15,30 @@ button {
     border: none;
 }
 
+.button {
+    width: max-content;
+    width: -moz-max-content;
+    font-size: 1em;
+    border: 1px solid #36c1c8;
+    border-radius: 4px;
+    background: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    line-height: 1;
+    padding: 8px 12px;
+    -o-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.button:hover {
+    background: #36c1c8;
+    color: #ffffff;
+}
+
 .nav-bar {
     width: 100%;
     display: flex;
@@ -387,28 +411,24 @@ input[type=number] {
     border-bottom: 2px solid #1c61ce;
 }
 
-.button {
-    width: max-content;
-    width: -moz-max-content;
-    font-size: 1em;
-    border: 1px solid #36c1c8;
-    border-radius: 4px;
-    background: #ffffff;
-    cursor: pointer;
-    text-align: center;
-    -webkit-appearance: none;
-    line-height: 1;
-    padding: 8px 12px;
-    -o-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    outline: none;
+
+/* Delete account option */
+
+.remove-account-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
 }
 
-.button:hover {
-    background: #36c1c8;
-    color: #ffffff;
+.remove-account-button {
+    width: fit-content;
+    border: 1px solid #ca0606;
+    color: black;
+}
+
+.remove-account-button:hover {
+    background: #ca0606;
 }
 
 table td .question-number {
@@ -599,16 +619,6 @@ div.remaining-paper-count {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.remove-account-button {
-    width: fit-content;
-    border: 1px solid #ca0606;
-    color: black;
-}
-
-.remove-account-button:hover {
-    background: #ca0606;
 }
 
 .next-button {
