@@ -71,7 +71,7 @@
          <td>" . $row['credentials'] . "</td>  
          <td>" . $row['experience'] . "</td>
          <td class='remove-account-cell'>
-            <a class='button remove-account-button' href='delete.php?id=" . $row['id'] . "'>Remove</a>
+            <a class='button remove-account-button' href='remove_account.php?account_type='doctor'&id=" . $row['id'] . "'>Remove</a>
         </td>      
        </tr>  
         ";
