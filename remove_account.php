@@ -19,7 +19,7 @@ function removeAccount($conn, $account_type, $id){
     }
 
     mysqli_query($conn, "DELETE FROM patient_credentials WHERE id='".$id."'");
-    header("Location: doctor_dashboard_1.php");
+    header("Location: doctor_dashboard.php");
 
     //Close connection
     mysqli_close($conn);

@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: doctor_dashboard_1.php");
+    header("location: doctor_dashboard.php");
     exit;
 }
 
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             // Redirect user to welcome page
-                            header("location: doctor_dashboard_1.php");
+                            header("location: doctor_dashboard.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <input id="login" type="submit" class="btn login" value="login">
 
-                    <a href="doctor_dashboard_1.php" class="btn login guest-login">Login as Guest</a>
+                    <a href="doctor_dashboard.php" class="btn login guest-login">Login as Guest</a>
                 </form>
 
             </div>
