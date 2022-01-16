@@ -57,6 +57,7 @@
                         <tr>
                             <th>Patient Id</th>
                             <th>Patient Name</th>
+                            <th>View Patient</th>
                             <th>Remove Patient</th>
                         </tr>
                         
@@ -68,7 +69,8 @@
                                 echo "  
                             <tr>  
                                 <td>" . $row['id'] . "</td>  
-                                <td>" . $row['name'] . "</td>  
+                                <td>" . $row['name'] . "</td>
+                                <td><a class='button'>View Patient</a></td>  
                                 <td><a class='button remove-account-button' href='remove_account.php?account_type=patient&id=" . $row['id'] . "'>Remove</a></td>  
                             </tr>  
                             ";
