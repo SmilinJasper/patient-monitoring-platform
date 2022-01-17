@@ -52,7 +52,6 @@
 
             <!--Table with answersheets info-->
             <div class="table-responsive">
-                <center>
                     <table class="styled-table">
                         <tr>
                             <th>Patient Id</th>
@@ -83,7 +82,7 @@
                         ?>
 
                     </table>
-                </center>
+                    <a class="button add-patient-button" href="patient_registration_form.php">Add Patient</a>
             </div>
         </main>
     </body>

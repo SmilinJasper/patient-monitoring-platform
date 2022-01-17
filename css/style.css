@@ -369,6 +369,13 @@ input[type=number] {
 }
 
 .table-responsive {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    margin: auto;
+    padding: 0px 20px;
     overflow: auto;
 }
 
@@ -430,6 +437,10 @@ input[type=number] {
 
 .remove-account-button:hover {
     background: #ca0606;
+}
+
+.add-patient-button {
+    align-self: flex-end;
 }
 
 table td .question-number {
