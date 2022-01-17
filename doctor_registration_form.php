@@ -179,7 +179,7 @@ mysqli_close($conn);
         <form>
             <ul class="nav-bar">
                 <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
-                <li><button type="submit" formaction="logout_to_doctor_login.php">Dcotor Login</button></li>
+                <li><button type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
                 <li><button class="active" type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
                 <li class="nav-item-right"><button type="submit" formaction="logout_to_admin_login.php">Logout</button></li>
             </ul>
@@ -201,9 +201,9 @@ mysqli_close($conn);
 
                 <div class="login-error-message">
                     <?php 
-                    echo "<p>" . $username_err . "</p>";
-                    echo "<p>" . $password_err . "</p>";                  
-                    echo "<p>" . $confirm_password_err . "</p>";
+                        echo "<p>" . $username_err . "</p>";
+                        echo "<p>" . $password_err . "</p>";                  
+                        echo "<p>" . $confirm_password_err . "</p>";
                     ?>
                 </div>
 
