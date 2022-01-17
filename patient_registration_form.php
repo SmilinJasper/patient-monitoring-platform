@@ -146,7 +146,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <h5>Username</h5>
+                        <label for="input-username">
+                            <h5>Username</h5>
+                        </label>
                         <input id="input-username" name="username" type="text" class="input input-username">
                     </div>
                 </div>
@@ -156,7 +158,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-lock"></i>
                     </div>
                     <div class="div">
-                        <h5>Password</h5>
+                        <label for="input-password">
+                            <h5>Password</h5>
+                        </label>
                         <input id="input-password" name="password" type="password" class="input input-password">
                     </div>
                 </div>
@@ -166,7 +170,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-lock"></i>
                     </div>
                     <div class="div">
-                        <h5>Confirm Password</h5>
+                        <label for="input-password">
+                            <h5>Confirm Password</h5>
+                        </label>
                         <input id="input-password" name="confirm-password" type="password" class="input input-password">
                     </div>
                 </div>
@@ -176,7 +182,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-user"></i>
                     </div>    
                     <div class="div">
-                        <h5>Name</h5>
+                        <label for="input-name">
+                            <h5>Name</h5>
+                        </label>
                         <input id="input-name" name="patient-name" type="text" class="input" required>
                     </div>
                 </div>
@@ -186,7 +194,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-user"></i>
                     </div>    
                     <div class="div">
-                        <h5>Date of Birth</h5>
+                        <label for="input-date-of-birth">
+                            <h5>Date of Birth</h5>
+                        </label>
                         <input id="input-date-of-birth" name="patient-date-of-birth" type="date" class="input" required>
                     </div>
                 </div>
@@ -196,7 +206,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-user"></i>
                     </div>    
                     <div class="div">
-                        <h5>Blood Group</h5>
+                        <label for="input-blood-group">
+                            <h5>Blood Group</h5>
+                        </label>
                         <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3" required>
                     </div>
                 </div>
@@ -206,8 +218,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-user"></i>
                     </div>    
                     <div class="div">
-                        <h5>Contact Number</h5>
-                        <input id="input-contact-number" name="patient-contact-number" type="number" class="input" maxlength="10" required>
+                        <label for="input-contact-number">
+                            <h5>Contact Number</h5>
+                        </label>
+                        <input id="input-contact-number" name="patient-contact-number" type="tel" class="input" maxlength="10" required>
                     </div>
                 </div>
 
