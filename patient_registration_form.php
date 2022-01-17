@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username_err = "Please enter a username.";
     } else {
         // Prepare a select statement
-        $sql = "SELECT id FROM student_login_credentials WHERE username = ?";
+        $sql = "SELECT id FROM patient_credentials WHERE username = ?";
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO student_login_credentials (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO patient_credentials (username, password) VALUES (?, ?)";
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>Student Registration</title>
+    <title>Patient Registration</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -112,10 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav>
         <form>
             <ul class="nav-bar">
-                <li><button type="submit" formaction="logout_to_student_login.php">Student Login</button></li>
-                <li><button type="submit" formaction="logout_to_staff_login.php">Staff Login</button></li>
-                <li><a class="active" href="admin_login.php">Admin Login</a></li>
-                <li class="nav-item-right"><button type="submit" formaction="logout_to_admin_login.php">Logout</button></li>
+                <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
+                <li><button class="active" type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
+                <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
+                <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button></li>
             </ul>
         </form>
     </nav>
@@ -131,10 +131,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="student-login-form login-form">
 
-                <h2 class="title">Register Student</h2>
+                <h2 class="title">Register Patient</h2>
 
                 <div class="login-error-message">
-                    <p>Please Enter Valid Credentials</p>
+                    <?php 
+                        echo "<p>" . $username_err . "</p>";
+                        echo "<p>" . $password_err . "</p>";                  
+                        echo "<p>" . $confirm_password_err . "</p>";
+                    ?>
                 </div>
 
                 <div class="input-div one">
@@ -164,6 +168,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="div">
                         <h5>Confirm Password</h5>
                         <input id="input-password" name="confirm-password" type="password" class="input input-password">
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <h5>Name</h5>
+                        <input id="input-name" name="patient-name" type="text" class="input" required>
+                    </div>
+                </div>
+                
+                <div class="input-div input-heading-top">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <h5>Date of Birth</h5>
+                        <input id="input-date-of-birth" name="patient-date-of-birth" type="date" class="input" required>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <h5>Blood Group</h5>
+                        <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3" required>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <h5>Contact Number</h5>
+                        <input id="input-contact-number" name="patient-contact-number" type="number" class="input" maxlength="10" required>
                     </div>
                 </div>
 
