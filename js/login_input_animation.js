@@ -11,9 +11,7 @@ function addcl() {
 
 function remcl() {
     let parent = this.parentNode.parentNode;
-    if (this.value == "") {
-        parent.classList.remove("focus");
-    }
+    if (this.value == "") parent.classList.remove("focus");
 }
 
 inputs.forEach(input => {
