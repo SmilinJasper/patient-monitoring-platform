@@ -232,12 +232,12 @@ form.login-form {
     width: 50%;
 }
 
-.input-div.input-heading-top>div>h5 {
+.input-div.input-heading-top h5 {
     top: -5px;
     font-size: 15px;
 }
 
-.input-div.focus>div>h5 {
+.input-div.focus h5 {
     top: -5px;
     font-size: 15px;
 }
