@@ -86,6 +86,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement
             mysqli_stmt_close($stmt);
         }
+
+        
+        // Save patient profile details in the databse
+        $patient_id = mysqli_query($conn, "SELECT max(id) FROM patient_credentials");
+        $patient_id = mysqli_fetch_array($patient_id);
+        $patient_id = $patient_id[0];
+        $patient_name = $_POST["patient-name"];
+        $patient_date_of_birth = $_POST["patient-date-of-birth"];
+        $patient_age = date_diff($patient_date_of_birth, date_create("today"))->y;
+        $patient_blood_group = $_POST["patient-blood-group"];
+        $patient_contact_number = $_POST["patient-contact-number"];
+
+        // Save doctor profile details in the databse
+        $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_contact_number')";
+
+        if (mysqli_query($conn, $sql)) {
+            // Redirect to login page
+            header("location: doctor_added.html");
+            } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
     }
 
     // Close connection

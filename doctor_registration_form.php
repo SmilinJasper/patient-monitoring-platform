@@ -88,9 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Save doctor profile details in the databse
-    $doctor_id_column = mysqli_query($conn, "SELECT max(id) FROM doctor_credentials");
-    $doctor_id_array = mysqli_fetch_array($doctor_id_column);
-    $doctor_id = $doctor_id_array[0];
+    $doctor_id = mysqli_query($conn, "SELECT max(id) FROM doctor_credentials");
+    $doctor_id = mysqli_fetch_array($doctor_id);
+    $doctor_id = $doctor_id[0];
     $doctor_name = $_POST["doctor-name"];
     $doctor_credentials = $_POST["credentials"];
     $doctor_credentials = join(", ", $doctor_credentials);
@@ -142,9 +142,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
 
+        // Save doctor profile details in the databse
         $sql = "INSERT INTO doctor_profiles (id, name, credentials, experience) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience')";
 
-        // Save doctor profile details in the databse
         if (mysqli_query($conn, $sql)) {
             // Redirect to login page
             header("location: doctor_added.html");
