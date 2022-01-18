@@ -77,8 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: student_added.html");
+                echo "Successfully added patient credentials!";                               
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -94,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_id = $patient_id[0];
         $patient_name = $_POST["patient-name"];
         $patient_date_of_birth = $_POST["patient-date-of-birth"];
-        $patient_age = date_diff($patient_date_of_birth, date_create("today"))->y;
+        $patient_age = date_diff(date_create($patient_date_of_birth), date_create("today"))->y;
         $patient_blood_group = $_POST["patient-blood-group"];
         $patient_contact_number = $_POST["patient-contact-number"];
 
@@ -103,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_query($conn, $sql)) {
             // Redirect to login page
-            header("location: doctor_added.html");
+            header("location: patient_added.html");
             } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
@@ -243,7 +242,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-contact-number">
                             <h5>Contact Number</h5>
                         </label>
-                        <input id="input-contact-number" name="patient-contact-number" type="tel" class="input" maxlength="10" required>
+                        <input id="input-contact-number" name="patient-contact-number" type="text" class="input" maxlength="10" required>
                     </div>
                 </div>
 
