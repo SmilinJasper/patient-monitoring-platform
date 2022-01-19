@@ -95,10 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_date_of_birth = $_POST["patient-date-of-birth"];
         $patient_age = date_diff(date_create($patient_date_of_birth), date_create("today"))->y;
         $patient_blood_group = $_POST["patient-blood-group"];
+        $patient_height = $_POST["patient-height"];
+        $patient_weight = $_POST["patient-weight"];
         $patient_contact_number = $_POST["patient-contact-number"];
 
         // Save doctor profile details in the databse
-        $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_contact_number')";
+        $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, height, weight, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
             // Redirect to login page
@@ -231,6 +233,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h5>Blood Group</h5>
                         </label>
                         <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3" required>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <label for="input-height">
+                            <h5>Height (In CM)</h5>
+                        </label>
+                        <input id="input-height" name="patient-height" type="number" class="input" maxlength="3" required>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>    
+                    <div class="div">
+                        <label for="input-weight">
+                            <h5>Weight (In KG)</h5>
+                        </label>
+                        <input id="input-weight" name="patient-weight" type="number" class="input" maxlength="3" required>
                     </div>
                 </div>
 
