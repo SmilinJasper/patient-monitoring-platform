@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                echo "Successfully added patient credentials!";                               
+                echo "Successfully added patient credentials!";
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_close($stmt);
         }
 
-        
+
         // Save patient profile details in the databse
         $patient_id = mysqli_query($conn, "SELECT max(id) FROM patient_credentials");
         $patient_id = mysqli_fetch_array($patient_id);
@@ -98,18 +98,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_height = $_POST["patient-height"];
         $patient_weight = $_POST["patient-weight"];
         $patient_contact_number = $_POST["patient-contact-number"];
-        $patient_bmi = round($patient_weight/($patient_height*$patient_height)* 703,2);
+        $patient_bmi = round($patient_weight / ($patient_height * $patient_height) * 703, 2);
 
         // Save doctor profile details in the databse
         $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
-            // Redirect to login page
-            header("location: patient_added.html");
-            } else {
+            echo "Successfully added patient profile details!";
+        } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
+        $sql = "CREATE TABLE patient_" . $patient_id . "_medicines (id INT(11) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), morning BOOLEAN, afternoon BOOLEAN, evening BOOLEAN, night BOOLEAN)";
+
+        if (mysqli_query($conn, $sql)) {
+            // Redirect to login page
+            header("location: patient_added.html");
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
 
     // Close connection
@@ -137,9 +144,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form>
             <ul class="nav-bar">
                 <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
-                <li><button class="active" type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
+                <li><button class="active" type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button>
+                </li>
                 <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
-                <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button></li>
+                <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button>
+                </li>
             </ul>
         </form>
     </nav>
@@ -153,15 +162,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="login-content">
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="student-login-form login-form">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
+                class="student-login-form login-form">
 
                 <h2 class="title">Register Patient</h2>
 
                 <div class="login-error-message">
-                    <?php 
-                        echo "<p>" . $username_err . "</p>";
-                        echo "<p>" . $password_err . "</p>";                  
-                        echo "<p>" . $confirm_password_err . "</p>";
+                    <?php
+                    echo "<p>" . $username_err . "</p>";
+                    echo "<p>" . $password_err . "</p>";
+                    echo "<p>" . $confirm_password_err . "</p>";
                     ?>
                 </div>
 
@@ -204,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-name">
                             <h5>Name</h5>
@@ -212,11 +222,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input id="input-name" name="patient-name" type="text" class="input" required>
                     </div>
                 </div>
-                
+
                 <div class="input-div input-heading-top">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-date-of-birth">
                             <h5>Date of Birth</h5>
@@ -228,48 +238,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-blood-group">
                             <h5>Blood Group</h5>
                         </label>
-                        <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3" required>
+                        <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3"
+                            required>
                     </div>
                 </div>
 
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-height">
                             <h5>Height (In CM)</h5>
                         </label>
-                        <input id="input-height" name="patient-height" type="number" class="input" min="1" maxlength="3" required>
+                        <input id="input-height" name="patient-height" type="number" class="input" min="1" maxlength="3"
+                            required>
                     </div>
                 </div>
 
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-weight">
                             <h5>Weight (In KG)</h5>
                         </label>
-                        <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3" required>
+                        <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3"
+                            required>
                     </div>
                 </div>
 
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <label for="input-contact-number">
                             <h5>Contact Number</h5>
                         </label>
-                        <input id="input-contact-number" name="patient-contact-number" type="text" class="input" maxlength="10" required>
+                        <input id="input-contact-number" name="patient-contact-number" type="text" class="input"
+                            maxlength="10" required>
                     </div>
                 </div>
 
