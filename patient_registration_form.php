@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_height = $_POST["patient-height"];
         $patient_weight = $_POST["patient-weight"];
         $patient_contact_number = $_POST["patient-contact-number"];
-        $patient_bmi = round($patient_weight / ($patient_height * $patient_height) * 703, 2);
+        $patient_bmi = round($patient_weight / ($patient_height / 100 * $patient_height / 100));
 
         // Save doctor profile details in the databse
         $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
