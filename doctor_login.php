@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <input id="login" type="submit" class="btn login" value="login">
 
-                    <a href="doctor_dashboard.php" class="btn login guest-login">Login as Guest</a>
+                    <a href="doctor_dashboard.php?id='99999'" class="btn login guest-login">Login as Guest</a>
                 </form>
 
             </div>
