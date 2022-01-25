@@ -534,44 +534,48 @@ input[type="file"] {
 }
 
 div.answersheets-info-container {
+    margin: auto;
+    padding: 8px;
     position: relative;
     top: 8px;
     width: 310px;
     background: white;
     border-radius: 8px;
     box-shadow: 5px 5px 10px #dcdcdc;
-    padding: 8px;
 }
 
 div.answersheets-info-container header {
+    padding: 8px;
     background: #52d1a6;
     color: white;
+    font-size: 0.8em;
+    text-align: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    padding: 8px;
-    text-align: center;
-    font-size: 0.8em;
 }
 
-div.course-info-container {
+.patient-info-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin: 1em 0em;
     text-align: right;
     line-height: 26px;
-    margin-bottom: 10px;
 }
 
-div.course-info input {
+.patient-info-value {
     height: 20px;
-    width: 160px;
+    width: fit-content;
     margin-left: 10px;
     border: none;
     outline: none;
     background: transparent;
 }
 
-div.course-info {
+.patient-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1px;
     border-bottom: 1px solid #d6d6d6;
 }
 
@@ -594,6 +598,29 @@ div.checked-paper-count {
 div.remaining-paper-count {
     background: beige;
     padding: 8px;
+}
+
+.bmi-severely-underweight,
+.bmi-obese {
+    color: #bc2020;
+}
+
+.bmi-underweight,
+.bmi-slightly-obese {
+    color: #d38888;
+}
+
+.bmi-slightly-underweight,
+.bmi-overweight {
+    color: #ffe400;
+}
+
+.bmi-normal {
+    color: #008137;
+}
+
+.bmi-morbidly-obese {
+    color: #8a0101;
 }
 
 .check-papers-button {
