@@ -295,6 +295,10 @@ form.login-form {
     display: flex;
 }
 
+.doctor-id {
+    display: none;
+}
+
 
 /* Remove arrow marks in number input in Chrome, Safari, Edge, Opera */
 

@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_id = mysqli_query($conn, "SELECT max(id) FROM patient_credentials");
         $patient_id = mysqli_fetch_array($patient_id);
         $patient_id = $patient_id[0];
+        $doctor_id = $_POST['doctor-id'];
         $patient_name = $_POST["patient-name"];
         $patient_date_of_birth = $_POST["patient-date-of-birth"];
         $patient_age = date_diff(date_create($patient_date_of_birth), date_create("today"))->y;
@@ -101,18 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_bmi = round($patient_weight / ($patient_height / 100 * $patient_height / 100));
 
         // Save doctor profile details in the databse
-        $sql = "INSERT INTO patient_profiles (id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
+        $sql = "INSERT INTO patient_profiles (id, doctor_id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$doctor_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "Successfully added patient profile details!";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-
-        $sql = "CREATE TABLE patient_" . $patient_id . "_medicines (id INT(11) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), morning BOOLEAN, afternoon BOOLEAN, evening BOOLEAN, night BOOLEAN)";
-
-        if (mysqli_query($conn, $sql)) {
-            // Redirect to login page
             header("location: patient_added.html");
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -164,6 +156,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
                 class="student-login-form login-form">
+
+                <!-- Hidden input with doctor id -->
+                <input class="doctor-id" type="number" id="doctor-id" name="doctor-id" readonly
+                    value="<?php echo $_GET['id']; ?>">
 
                 <h2 class="title">Register Patient</h2>
 

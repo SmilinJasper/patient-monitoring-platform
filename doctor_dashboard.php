@@ -40,7 +40,7 @@
         <!-- <a class="button back-button" href="staff_dashboard_1.php">Back</a> -->
 
         <?php
-
+        $doctor_id = $_GET['id'];
         include "database.php";
 
         //Get patient profile info from database table
@@ -81,7 +81,7 @@
                 ?>
 
             </table>
-            <a class="button add-patient-button" href="patient_registration_form.php">Add Patient</a>
+            <?php echo "<a class='button add-patient-button' href='patient_registration_form.php?id=" . $doctor_id . "'>Add Patient</a>"; ?>
         </div>
     </main>
 </body>
