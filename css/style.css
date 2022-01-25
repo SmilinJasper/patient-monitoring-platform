@@ -537,7 +537,7 @@ input[type="file"] {
     margin-top: 10px;
 }
 
-div.answersheets-info-container {
+div.patient-info-container {
     margin: auto;
     padding: 8px;
     position: relative;
@@ -548,7 +548,7 @@ div.answersheets-info-container {
     box-shadow: 5px 5px 10px #dcdcdc;
 }
 
-div.answersheets-info-container header {
+div.patient-info-container header {
     padding: 8px;
     background: #52d1a6;
     color: white;
@@ -558,7 +558,7 @@ div.answersheets-info-container header {
     border-top-right-radius: 8px;
 }
 
-.patient-info-container {
+.main-patient-info-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -583,24 +583,19 @@ div.answersheets-info-container header {
     border-bottom: 1px solid #d6d6d6;
 }
 
-div.paper-count-container {
+div.extra-patient-info-container {
     display: flex;
     justify-content: space-between;
     text-align: center;
 }
 
-div.uploaded-paper-count {
+div.medications-prescribed-count {
     background: aliceblue;
     padding: 8px;
 }
 
-div.checked-paper-count {
+div.patient-bmi-value {
     background: antiquewhite;
-    padding: 8px;
-}
-
-div.remaining-paper-count {
-    background: beige;
     padding: 8px;
 }
 

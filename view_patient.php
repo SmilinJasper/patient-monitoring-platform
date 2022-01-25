@@ -72,7 +72,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         </header>
 
         <!--Answersheets info-->
-        <div class="answersheets-info-container">
+        <div class="patient-info-container">
 
             <header>
                 <h1>COMPUTER SCIENCE</h1>
@@ -87,7 +87,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                 echo
                 "<!--Patient info-->
 
-                        <div class='patient-info-container'>
+                        <div class='main-patient-info-container'>
                             <div class='patient-info'>
                                 <p>Name:</p>
                                 <p class='patient-info-value'>" . $row['name'] . "</p>
@@ -124,14 +124,14 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                             </div>
                         </div>
 
-                        <!--Paper count info-->
-                        <div class='paper-count-container'>
-                            <div class='uploaded-paper-count'>
+                        <!--Extra patient info-->
+                        <div class='extra-patient-info-container'>
+                            <div class='medications-prescribed-count'>
                                 <p>Medications Prescribed</p>
                                 <p>
                                 </p>
                             </div>
-                            <div class='checked-paper-count'>
+                            <div class='patient-bmi-value'>
                                 <p>BMI</p>
                                 <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
                             </div>
