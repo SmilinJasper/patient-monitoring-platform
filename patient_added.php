@@ -1,3 +1,9 @@
+<?php
+
+$docotor_id = $_GET['id'];
+
+?>
+
 <html>
 
 <head>
@@ -18,7 +24,8 @@
             <li><button type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
             <li><button class="active" type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button></li>
             <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
-            <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button></li>
+            <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button>
+            </li>
         </ul>
         </div>
 
@@ -31,7 +38,7 @@
             <!--Paper evaluated message-->
             <center>
                 <h1 style="color: #4B88E7;">Patient Added Successfully</h1>
-                <a href="doctor_dashboard.php" class="button next-button">NEXT</a>
+                <?php echo "<a href='doctor_dashboard.php?id=" . $docotor_id . "' class='button next-button'>NEXT</a>"; ?>
             </center>
 
         </main>

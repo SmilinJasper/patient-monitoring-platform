@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO patient_profiles (id, doctor_id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$doctor_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
-            header("location: patient_added.html");
+            header("location: patient_added.php?id=$doctor_id");
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
