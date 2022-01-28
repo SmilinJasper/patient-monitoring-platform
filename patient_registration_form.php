@@ -227,7 +227,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-date-of-birth">
                             <h5>Date of Birth</h5>
                         </label>
-                        <input id="input-date-of-birth" name="patient-date-of-birth" type="date" class="input" required>
+
+                        <?php
+                        $today = new DateTime("now", new DateTimeZone('Asia/Calcutta'));
+                        $today = $today->format('Y-m-d');
+                        echo "<input id='input-date-of-birth' name='patient-date-of-birth' type='date' class='input' min='1900-01-01' max='$today' required>";
+                        ?>
+
                     </div>
                 </div>
 
