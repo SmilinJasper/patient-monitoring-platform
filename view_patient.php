@@ -138,11 +138,71 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                         </div>";
             }
 
-            // Close Connection
-            mysqli_close($conn);
             ?>
 
         </div>
+
+        <?php
+        $doctor_id = $_GET['doctor_id'];
+
+        //Get patient profile info from database table
+        $sql = "SELECT * FROM patient_medicines";
+        $result = mysqli_query($conn, $sql);
+
+        ?>
+
+        <br />
+
+        <!--Table with answersheets info-->
+        <div class="table-responsive">
+            <table class="styled-table medicine-table">
+                <tr>
+                    <th>Id</th>
+                    <th>Medicine</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Evening</th>
+                    <th>Night</th>
+                </tr>
+
+                <?php
+
+                //Display all patient info from database
+                while ($row = mysqli_fetch_array($result)) {
+                    echo "  
+                            <tr>  
+
+                                <td>" . $row['id'] . "</td>  
+                                <td>" . $row['medicine'] . "</td>
+
+                                <td>
+                                    <div class='medicine-check-mark-container'>" . (($row['morning'] == true) ? "<img class='check-mark-img' src='img/check-mark-tick-green.png' alt='Prescribed'" : "<img class='check-mark-img' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                    </div>
+                                </td> 
+
+                                <td>
+                                    <div class='medicine-check-mark-container'>" . (($row['afternoon'] == true) ? "<img class='check-mark-img' src='img/check-mark-tick-green.png' alt='Prescribed'" : "<img class='check-mark-img' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+                                    </div>
+                                </td> 
+
+                                <td>
+                                    <div class='medicine-check-mark-container'>" . (($row['evening'] == true) ? "<img class='check-mark-img' src='img/check-mark-tick-green.png' alt='Prescribed'" : "<img class='check-mark-img' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+                                    </div>
+                                </td> 
+
+                                <td>
+                                    <div class='medicine-check-mark-container'>" . (($row['night'] == true) ? "<img class='check-mark-img' src='img/check-mark-tick-green.png' alt='Prescribed'" : "<img class='check-mark-img' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+                                    </div>    
+                                </td>
+
+                            </tr>  
+                            ";
+                }
+
+                // Close Connection
+                mysqli_close($conn);
+
+                ?>
     </main>
 </body>
 

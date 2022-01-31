@@ -622,6 +622,16 @@ div.patient-bmi-value {
     color: #8a0101;
 }
 
+.medicine-check-mark-container {
+    height: 47px;
+    display: grid;
+    place-items: center;
+}
+
+.check-mark-img {
+    height: 20px;
+}
+
 .check-papers-button {
     margin-top: 8px;
     text-align: center;
