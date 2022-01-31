@@ -44,7 +44,7 @@
         include "database.php";
 
         //Get patient profile info from database table
-        $sql = "SELECT * FROM patient_profiles";
+        $sql = "SELECT * FROM patient_profiles WHERE doctor_id = '$doctor_id'";
         $result = mysqli_query($conn, $sql);
 
         ?>
