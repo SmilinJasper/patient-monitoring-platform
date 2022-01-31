@@ -143,10 +143,8 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         </div>
 
         <?php
-        $doctor_id = $_GET['doctor_id'];
-
         //Get patient profile info from database table
-        $sql = "SELECT * FROM patient_medicines";
+        $sql = "SELECT * FROM patient_medicines where patient_id = '$patient_id'";
         $result = mysqli_query($conn, $sql);
 
         ?>

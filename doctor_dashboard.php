@@ -69,7 +69,7 @@
                             <tr>  
                                 <td>" . $row['id'] . "</td>  
                                 <td>" . $row['name'] . "</td>
-                                <td><a class='button' href='view_patient.php?id=" . $row['id'] . "&doctor_id=" . $doctor_id . "'>View Patient</a></td>  
+                                <td><a class='button' href='view_patient.php?id=" . $row['id'] . "'>View Patient</a></td>  
                                 <td><a class='button remove-account-button' href='remove_account.php?account_type=patient&id=" . $row['id'] . "'>Remove</a></td>  
                             </tr>  
                             ";
