@@ -1,7 +1,8 @@
 <?php
 
-// Get patient id form url
+// Get patient id mand doctor id form url
 $patient_id = isset($_GET['id']) ? $_GET['id'] : "";
+$doctor_id = isset($_GET['doctor-id']) ? $_GET['doctor-id'] : "";
 
 // Open database connection
 include "database.php";
@@ -161,92 +162,94 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         <br />
 
         <!--Table with patient's medicines info and edit options-->
-        <div class="patient-medicine-info-container">
+
+        <form method="POST" action="add_medicines.php" class="patient-medicine-info-container">
+
             <div class="table-responsive">
-                <table class="styled-table medicine-table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Medicine</th>
-                            <th>Morning</th>
-                            <th>Afternoon</th>
-                            <th>Evening</th>
-                            <th>Night</th>
-                        </tr>
-                    </thead>
+                    
+                    <table class="styled-table medicine-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Medicine</th>
+                                <th>Morning</th>
+                                <th>Afternoon</th>
+                                <th>Evening</th>
+                                <th>Night</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medicine-table-body">
+                        <?php
+                        //Display all patient info from database
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo "
+                                    <tr>
+                                        <td class='medicine-id'>" . $row['id'] . "</td>
+                                        <td>" . $row['medicine'] . "</td>
+                                        <td>
+                                            <div class='medicine-check-mark-container'>"
+                                            . (($row['morning']) == true
+                                            ? ($row['morning'] == 'Taken'
+                                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
+                                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
+                                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                            </div>
+                                        </td>
+                    
+                                        <td>
+                                            <div class='medicine-check-mark-container'>"
+                                            . (($row['afternoon']) == true
+                                            ? ($row['afternoon'] == 'Taken'
+                                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
+                                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
+                                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class='medicine-check-mark-container'>"
+                                            . (($row['evening']) == true
+                                            ? ($row['evening'] == 'Taken'
+                                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
+                                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
+                                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class='medicine-check-mark-container'>"
+                                            . (($row['night']) == true
+                                            ? ($row['night'] == 'Taken'
+                                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
+                                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
+                                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                            </div>
+                                        </td>
+                    
+                                    </tr>
+                    
+                                ";
+                        }
+                        // Close Connection
+                        mysqli_close($conn);
+                        ?>
 
-                    <tbody id="medicine-table-body">
-                    <?php
-
-                    //Display all patient info from database
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "  
-                                <tr>
-                                    <td class='medicine-id'>" . $row['id'] . "</td>
-                                    <td>" . $row['medicine'] . "</td>
-
-                                    <td>
-                                        <div class='medicine-check-mark-container'>"
-                                        . (($row['morning']) == true
-                                        ? ($row['morning'] == 'Taken'
-                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
-                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                        </div>
-                                    </td>
-                                    
-                                    <td>
-                                        <div class='medicine-check-mark-container'>"
-                                        . (($row['afternoon']) == true
-                                        ? ($row['afternoon'] == 'Taken'
-                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
-                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class='medicine-check-mark-container'>"
-                                        . (($row['evening']) == true
-                                        ? ($row['evening'] == 'Taken'
-                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
-                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class='medicine-check-mark-container'>"
-                                        . (($row['night']) == true
-                                        ? ($row['night'] == 'Taken'
-                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
-                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                        </div>
-                                    </td>
-                                    
-                                </tr>
-                                
-                            ";
-                    }
-
-                    // Close Connection
-                    mysqli_close($conn);
-
-                    ?>
-                    </tbody>
-                </table>    
+                        </tbody>
+                    </table>
             </div>
                 
-                <div class="add-medicine-container">
+                <div class="add-medicine-form">
                    
                     <input type='image' id="add-medicine-button" class='ui-icon-big' src='img/plus-button.png' alt='Add medicine'/>
                    
                     <input type='image' id="submit-medicine-list-button" class='ui-icon-big' src='img/check-mark-tick-green.png' alt='Submit medicines list'/>
 
+                    <?php echo "<input type='number' value='" . $patient_id ."' id='patient-id' name='patient-id' hidden readonly>"  ?>
+
+                    <?php echo "<input type='number' value='" . $doctor_id ."' id='doctor-id' name='doctor-id' hidden readonly>"  ?>
+
                 </div>
+
+        </form>  
             
-        </div>
     </main>
 </body>
 

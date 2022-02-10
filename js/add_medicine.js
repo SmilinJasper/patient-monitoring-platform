@@ -5,9 +5,13 @@ const medicineIds = document.getElementsByClassName('medicine-id');
 const lastMedicineId = medicineIds[medicineIds.length - 1].innerHTML;
 const newMedicineId = lastMedicineId + 1;
 
-addMedicineButton.addEventListener('click', () => addMedicineInput());
+addMedicineButton.addEventListener('click', () => addMedicineInput(event));
 
-function addMedicineInput() {
+function addMedicineInput(event) {
+
+    //Prevnt form submission when clicking on add medicine button
+
+    event.preventDefault();
 
     // Create table elements to append
 
@@ -24,11 +28,11 @@ function addMedicineInput() {
     const tableDivisions = [];
 
     medicineIdTableDivision.innerHTML = `${newMedicineId}`;
-    medicineNameTableDivision.innerHTML = `<input type='text' id='medicine-name-input'>`
-    toTakeMorningTableDivision.innerHTML = `<input type='checkbox' value='Prescribed'>`
-    toTakeAfternoonTableDivision.innerHTML = `<input type='checkbox' value='Prescribed'>`
-    toTakeEveningTableDivision.innerHTML = `<input type='checkbox' value='Prescribed'>`
-    toTakeNightTableDivision.innerHTML = `<input type='checkbox' value='Prescribed'>`
+    medicineNameTableDivision.innerHTML = `<input type='text' id='medicine-name-input' name='medicine-name-input'>`;
+    toTakeMorningTableDivision.innerHTML = `<input type='checkbox' value='Prescribed' id='to-take-morning' name='to-take-morning'>`;
+    toTakeAfternoonTableDivision.innerHTML = `<input type='checkbox' value='Prescribed' id='to-take-afternoon' name='to-take-afternoon'>`;
+    toTakeEveningTableDivision.innerHTML = `<input type='checkbox' value='Prescribed' id='to-take-evening' name='to-take-evening'>`;
+    toTakeNightTableDivision.innerHTML = `<input type='checkbox' value='Prescribed' id='to-take-night' name='to-take-night'>`;
 
     tableDivisions.push(medicineIdTableDivision, medicineNameTableDivision, toTakeMorningTableDivision, toTakeAfternoonTableDivision, toTakeEveningTableDivision, toTakeNightTableDivision);
 
@@ -44,6 +48,5 @@ function addMedicineInput() {
     // Make submit button visible with right alignment
 
     submitMedicineListButton.style.display = 'block';
-    submitMedicineListButton.style.marginBottom = '-8px';
-    addMedicineButton.style.marginBottom = '19px';
+    addMedicineButton.style.display = 'none';
 }

@@ -651,7 +651,7 @@ div.patient-bmi-value {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.add-medicine-container {
+.add-medicine-form {
     display: flex;
     flex-direction: column;
 }
@@ -675,25 +675,8 @@ div.patient-bmi-value {
     background: transparent;
 }
 
-.check-papers-button {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.paper-id {
+#patient-id {
     display: none;
-}
-
-.evaluation-page-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 3rem;
-}
-
-.evaluation-form-container {
-    width: 25%;
-    font-size: 0.9em;
 }
 
 .evaluation-table {
