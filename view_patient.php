@@ -166,7 +166,9 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         <form method="POST" action="add_medicines.php" class="patient-medicine-info-container">
 
             <div class="table-responsive">
-                    
+            
+                <form action="delete_medicine.php" id="delete-medicine-form" class="hide"></form>
+
                     <table class="styled-table medicine-table">
                         <thead>
                             <tr>
@@ -176,6 +178,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                 <th>Afternoon</th>
                                 <th>Evening</th>
                                 <th>Night</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody id="medicine-table-body">
@@ -205,6 +208,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                             : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class='medicine-check-mark-container'>"
                                             . (($row['evening']) == true
@@ -214,6 +218,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                             : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class='medicine-check-mark-container'>"
                                             . (($row['night']) == true
@@ -224,6 +229,11 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                             </div>
                                         </td>
                     
+                                        <td>
+                                            <input type='number' value='". $row['id'] ."' readonly hidden form='delete-medicine-form'>
+                                            <input type='image' height='25px' src='img/bin-icon.png' form='delete-medicine-form'>
+                                        </td>
+
                                     </tr>
                     
                                 ";
