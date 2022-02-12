@@ -637,23 +637,16 @@ div.patient-bmi-value {
     place-items: center;
 }
 
-.medicine-table input {
-    height: 20px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
 .ui-icon {
     height: 20px;
+    width: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .ui-icon-big {
     height: 25px;
+    border-radius: 50%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-input.ui-icon-big-no-shawdow {
-    height: 25px;
-    box-shadow: none;
 }
 
 .add-medicine-form {
@@ -663,12 +656,10 @@ input.ui-icon-big-no-shawdow {
 
 #add-medicine-button {
     margin-bottom: 36px;
-    border-radius: 50%;
 }
 
 #submit-medicine-list-button {
     display: none;
-    border-radius: 50%;
 }
 
 #medicine-name-input {
