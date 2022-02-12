@@ -229,8 +229,11 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                     
                                         <td>
                                             <div class='table-icon-container'>
-                                                <input type='number' value='". $row['id'] ."' name='medicine-id' readonly hidden form='delete-medicine-form'>
+
+                                                <input type='number' value='". $row['id'] ."' id='medicine-id' name='medicine-id' readonly hidden form='delete-medicine-form'>
+
                                                 <input type='image' class='ui-icon-big-no-shawdow' src='img/bin-icon.png' form='delete-medicine-form'>
+
                                             </div>
                                         </td>
 
