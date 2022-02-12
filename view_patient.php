@@ -167,8 +167,6 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
             <div class="table-responsive">
             
-                <form action="delete_medicine.php" id="delete-medicine-form" class="hide"></form>
-
                     <table class="styled-table medicine-table">
                         <thead>
                             <tr>
@@ -190,7 +188,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         <td class='medicine-id'>" . $row['id'] . "</td>
                                         <td>" . $row['medicine'] . "</td>
                                         <td>
-                                            <div class='medicine-check-mark-container'>"
+                                            <div class='table-icon-container'>"
                                             . (($row['morning']) == true
                                             ? ($row['morning'] == 'Taken'
                                             ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
@@ -200,7 +198,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         </td>
                     
                                         <td>
-                                            <div class='medicine-check-mark-container'>"
+                                            <div class='table-icon-container'>"
                                             . (($row['afternoon']) == true
                                             ? ($row['afternoon'] == 'Taken'
                                             ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
@@ -210,7 +208,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         </td>
 
                                         <td>
-                                            <div class='medicine-check-mark-container'>"
+                                            <div class='table-icon-container'>"
                                             . (($row['evening']) == true
                                             ? ($row['evening'] == 'Taken'
                                             ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
@@ -220,7 +218,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         </td>
 
                                         <td>
-                                            <div class='medicine-check-mark-container'>"
+                                            <div class='table-icon-container'>"
                                             . (($row['night']) == true
                                             ? ($row['night'] == 'Taken'
                                             ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
@@ -230,8 +228,10 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         </td>
                     
                                         <td>
-                                            <input type='number' value='". $row['id'] ."' readonly hidden form='delete-medicine-form'>
-                                            <input type='image' height='25px' src='img/bin-icon.png' form='delete-medicine-form'>
+                                            <div class='table-icon-container'>
+                                                <input type='number' value='". $row['id'] ."' name='medicine-id' readonly hidden form='delete-medicine-form'>
+                                                <input type='image' class='ui-icon-big-no-shawdow' src='img/bin-icon.png' form='delete-medicine-form'>
+                                            </div>
                                         </td>
 
                                     </tr>
@@ -260,6 +260,8 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
         </form>  
             
+        <form action="delete_medicine.php" id="delete-medicine-form" hidden></form>
+
     </main>
 </body>
 

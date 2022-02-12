@@ -624,10 +624,6 @@ div.patient-bmi-value {
     color: #8a0101;
 }
 
-.hide {
-    display: none;
-}
-
 .patient-medicine-info-container {
     display: flex;
     justify-content: center;
@@ -635,7 +631,7 @@ div.patient-bmi-value {
     padding-bottom: 1em;
 }
 
-.medicine-check-mark-container {
+.table-icon-container {
     height: 47px;
     display: grid;
     place-items: center;
@@ -643,7 +639,6 @@ div.patient-bmi-value {
 
 .medicine-table input {
     height: 20px;
-    width: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -654,6 +649,11 @@ div.patient-bmi-value {
 .ui-icon-big {
     height: 25px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+input.ui-icon-big-no-shawdow {
+    height: 25px;
+    box-shadow: none;
 }
 
 .add-medicine-form {
