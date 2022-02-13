@@ -233,13 +233,15 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                 
                                     <td>
 
-                                        <form action='delete_medicine.php' method='POST' class='table-icon-container'>
+                                        <div class='table-icon-container'>
+                                            <form action='delete_medicine.php' method='POST'>
 
-                                            <input type='number' value='". $row['id'] ."' id='medicine-id' name='medicine-id' readonly hidden>
-
-                                            <input type='image' class='ui-icon-big' src='img/bin-icon.png'>
-
-                                        </form>
+                                                <input type='number' value='". $row['id'] ."' id='medicine-id' name='medicine-id' readonly hidden>
+                                                
+                                                <input type='image' class='ui-icon-big' src='img/bin-icon.png'>
+                                                
+                                            </form>
+                                        </div>
 
                                     </td>
 

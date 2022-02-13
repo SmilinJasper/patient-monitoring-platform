@@ -552,7 +552,7 @@ div.patient-info-container {
 
 div.patient-info-container header {
     padding: 8px;
-    background: #52d1a6;
+    background: #009879;
     color: white;
     font-size: 0.8em;
     text-align: center;
@@ -586,19 +586,20 @@ div.patient-info-container header {
 }
 
 div.extra-patient-info-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 75% 25%;
     text-align: center;
 }
 
 div.medications-prescribed-count {
-    background: aliceblue;
     padding: 8px;
+    background: aliceblue;
 }
 
 div.patient-bmi-value {
-    background: antiquewhite;
+    margin-left: 8px;
     padding: 8px;
+    background: antiquewhite;
 }
 
 .bmi-severely-underweight,
