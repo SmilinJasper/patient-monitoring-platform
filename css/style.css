@@ -662,7 +662,7 @@ div.patient-bmi-value {
     display: none;
 }
 
-#medicine-name-input {
+#new-medicine-input {
     width: 125px;
     max-width: min-content;
     text-align: center;
