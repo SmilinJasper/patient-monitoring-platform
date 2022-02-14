@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><a class="active" href="doctor_login.php">Doctor Login</a></li>
             <li><a href="admin_login.php">Admin Login</a></li>
         </ul>
-        </div>
+    </nav>
 
         <!--Background images-->
         <img class="wave" src="img/wave.png">
