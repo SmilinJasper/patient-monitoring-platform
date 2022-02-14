@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: student_dashboard.php");
+    header("location: patient_dashboard.php");
     exit;
 }
 
@@ -20,14 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if username is empty
     if (empty(trim($_POST["username"]))) {
-        $login_err = $username_err = "Please enter username";
+        $login_err = $username_err = "Please enter username.";
     } else {
         $username = trim($_POST["username"]);
     }
 
     // Check if password is empty
     if (empty(trim($_POST["password"]))) {
-        $login_err = $password_err = "Please enter your password";
+        $login_err = $password_err = "Please enter your password.";
     } else {
         $password = trim($_POST["password"]);
     }
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate credentials
     if (empty($username_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM student_login_credentials WHERE username = ?";
+        $sql = "SELECT id, username, password FROM patient_credentials WHERE username = ?";
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             // Redirect user to welcome page
-                            header("location: student_dashboard.php");
+                            header("location: patient_dashboard.php?id=" . $_SESSION['id']);
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>Student Login</title>
+    <title>Patient Login</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -107,62 +107,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!--Navigation bar-->
     <nav>
         <ul class="nav-bar">
-            <li><a class="student-login-nav active" href="index.php">Student Login</a></li>
-            <li><a href="staff_login.php">Staff Login</a></li>
+            <li><a href="index.php">Patient Login</a></li>
+            <li><a class="active" href="doctor_login.php">Doctor Login</a></li>
             <li><a href="admin_login.php">Admin Login</a></li>
         </ul>
     </nav>
 
-    <!--Background images-->
-    <img class="wave" src="img/wave.png">
-    <div class="container">
-        <div class="img">
-            <img src="img/bg.svg">
+        <!--Background images-->
+        <img class="wave" src="img/wave.png">
+
+        <div class="container">
+
+            <div class="img">
+                <img src="img/bg.svg">
+            </div>
+
+            <!--Login form-->
+            <div class="login-content">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
+                    class="staff-login-form login-form">
+                    <img src="img/avatar.svg">
+
+                    <h2 class="title">Welcome</h2>
+
+                    <div class="login-error-message">
+                        <p><?php echo $login_err ?></p>
+                    </div>
+
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Username</h5>
+                            <input id="input-username" name="username" type="text" class="input input-username">
+                        </div>
+                    </div>
+
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Password</h5>
+                            <input id="input-password" name="password" type="password" class="input input-password">
+                        </div>
+                    </div>
+
+                    <a href="#">Forgot Password?</a>
+
+                    <input id="login" type="submit" class="btn login" value="login">
+
+                    <a href="patient_dashboard.php?id='99999'" class="btn login guest-login">Login as Guest</a>
+                </form>
+
+            </div>
+
         </div>
-
-        <!--Login form-->
-        <div class="login-content">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
-                class="student-login-form login-form">
-
-                <img src="img/avatar.svg">
-
-                <h2 class="title">Welcome</h2>
-
-                <div class="login-error-message">
-                    <p><?php echo $login_err ?></p>
-                </div>
-
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Username</h5>
-                        <input id="input-username" name="username" type="text" class="input input-username">
-                    </div>
-                </div>
-
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Password</h5>
-                        <input id="input-password" name="password" type="password" class="input input-password">
-                    </div>
-                </div>
-
-                <a href="#">Forgot Password?</a>
-                <input id="login" type="submit" class="btn login" value="login">
-
-                <a href="student_dashboard.php" class="btn login guest-login">Login as Guest</a>
-
-            </form>
-
-        </div>
-
-    </div>
 
 </body>
 
