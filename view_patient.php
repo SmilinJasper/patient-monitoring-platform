@@ -83,7 +83,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         <div class="patient-info-container">
 
             <header>
-                <h1>COMPUTER SCIENCE</h1>
+                <h1>YOUR PATIENT</h1>
             </header>
 
             <!-- Display patient info from database -->
