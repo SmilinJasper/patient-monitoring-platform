@@ -1,13 +1,13 @@
 <?php
 
-// Get patient id mand doctor id form url
+// Get patient id and doctor id form url
 $patient_id = isset($_GET['id']) ? $_GET['id'] : "";
 $doctor_id = isset($_GET['doctor-id']) ? $_GET['doctor-id'] : "";
 
 // Open database connection
 include "database.php";
 
-// Get patient name from database
+// Get patient info from database
 $patient_name = mysqli_query($conn, "SELECT name FROM patient_profiles where id = '$patient_id'");
 $patient_name = mysqli_fetch_array($patient_name);
 $patient_name = $patient_name[0];

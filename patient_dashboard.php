@@ -1,26 +1,72 @@
-<html>
+<?php
+
+// Get patient id mand doctor id form url
+$patient_id = isset($_GET['id']) ? $_GET['id'] : "";
+
+// Open database connection
+include "database.php";
+
+// Get patient info from database
+$patient_name = mysqli_query($conn, "SELECT name FROM patient_profiles where id = '$patient_id'");
+$patient_name = mysqli_fetch_array($patient_name);
+$patient_name = $patient_name[0];
+
+$patient_bmi = mysqli_query($conn, "SELECT bmi FROM patient_profiles where id = '$patient_id'");
+$patient_bmi = mysqli_fetch_array($patient_bmi);
+$patient_bmi = $patient_bmi[0];
+
+$patient_age = mysqli_query($conn, "SELECT age FROM patient_profiles where id = '$patient_id'");
+$patient_age = mysqli_fetch_array($patient_age);
+$patient_age = $patient_age[0];
+
+
+$total_patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
+$total_patient_medications_prescribed = mysqli_fetch_array($total_patient_medications_prescribed);
+
+$total_patient_medications_prescribed = $total_patient_medications_prescribed[0]; 
+
+if ($patient_bmi < 16) $bmi_style = "bmi-severely-underweight";
+if ($patient_bmi < 17) $bmi_style = "bmi-underweight";
+if ($patient_bmi < 18.5) $bmi_style = "bmi-slightly-underweight";
+if ($patient_bmi < 25) $bmi_style = "bmi-normal";
+if ($patient_bmi < 30) $bmi_style = "bmi-overweight";
+if ($patient_bmi < 35) $bmi_style = "bmi-slightly-obese";
+if ($patient_bmi < 40) $bmi_style = "bmi-obese";
+if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
+
+$doctor_id = mysqli_query($conn, "SELECT doctor_id FROM patient_profiles where id = '$patient_id'");
+$doctor_id = mysqli_fetch_array($doctor_id);
+$doctor_id = $doctor_id[0];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Upload Form</title>
+    <title><?php echo $patient_name ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="js/update_page.js"></script>
+    <script defer src="js/add_medicine.js"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="upload-form-body">
+<body>
 
     <!--Navigation bar-->
     <nav>
         <form>
             <ul class="nav-bar">
-                <li><a class="active" href="index.php">Student Login</a></li>
-                <li><button type="submit" formaction="logout_to_staff_login.php">Staff Login</button></li>
+                <li><button class="active" type="submit" formaction="logout_to_patient_login.php">Patient Login</button></li>
+                <li><button type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button>
+                </li>
                 <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
-                <li class="nav-item-right"><button type="submit" formaction="logout_to_student_login.php">Logout</button></li>
+                <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button>
+                </li>
             </ul>
         </form>
     </nav>
@@ -31,75 +77,225 @@
     <!--Page wrapper-->
     <main class="page-wrapper">
 
-        <!--Upload form for answersheet-->
-        <div class="upload-form-container">
-            <form class="upload-form" method="POST" action="upload.php" enctype="multipart/form-data">
-                <fieldset class="upload-form-fieldset">
-                    <legend>Upload Answersheet</legend>
-                    <div class="form-item">
-                        <label for="file">Attach Answersheet:</label>
-                        <input type="file" name="file" required="ture" accept="application/pdf">
-                    </div>
-                </fieldset>
-                <div>
-                    <div class="submit-button-container">
-                        <input id="submit-button" type="submit" value="Submit" class="button">
-                    </div>
-                </div>
-            </form>
+        <!--Dashboard Header-->
+        <header class="center">
+            <h1>Your Doctor</h1>
+        </header>
+
+        <!--Answersheets info-->
+        <div class="patient-info-container">
+
+            <header>
+                <h1>YOUR DOCTOR</h1>
+            </header>
+
+            <!-- Display patient info from database -->
+            <?php
+            $sql = "SELECT * FROM doctor_profiles WHERE id = '$doctor_id'";
+            $result = mysqli_query($conn, $sql);
+
+            while ($row = mysqli_fetch_array($result)) {
+                echo
+                "<!--Patient info-->
+
+                        <div class='main-patient-info-container'>
+                            <div class='patient-info'>
+                                <p>Name:</p>
+                                <p class='patient-info-value'>" . $row['name'] . "</p>
+                            </div>
+
+                            <div class='patient-info'>
+                                <p>Credentials:</p>
+                                <p class='patient-info-value'>" . $row['credentials'] . "<p>
+                            </div>
+
+                            <div class='patient-info'>
+                                <p>Experience:</p>
+                                <p class='patient-info-value'>" . $row['experience'] . "</p>
+                            </div>
+
+                        </div>
+
+                        <!--Extra patient info-->
+                        <div class='extra-patient-info-container'>
+                            <div class='medications-prescribed-count'>
+                                <p>Medications Prescribed</p>
+                                <p>
+                                    " . $patient_medications_prescribed . "
+                                </p>
+                            </div>
+                            <div class='patient-bmi-value'>
+                                <p>BMI</p>
+                                <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
+                            </div>
+                        </div>";
+            }
+
+            ?>
+
         </div>
 
         <?php
 
-        // Include database file
-        include "database.php";
-
-        //Get all info from database table
-        $sql = "SELECT * FROM student_exam_results";
+        //Get patient profile info from database table
+        $sql = "SELECT * FROM patient_medicines WHERE patient_id = '$patient_id'";
         $result = mysqli_query($conn, $sql);
-
-        //Scan directory for uploads
-        $files = chdir("uploads");
-        array_multisort(array_map('filemtime', ($files = glob("*.{pdf}", GLOB_BRACE))), SORT_DESC, $files);
-        $orderedFiles = array_reverse($files);
 
         ?>
 
-        <!--Table with answersheets info-->
         <br />
-        <div class="table-responsive">
-            <center>
-                <table class="styled-table">
-                    <tr>
-                        <th>Assignment Id</th>
-                        <th>Is Checked</th>
-                        <th>Marks</th>
-                        <th>Attendance</th>
-                    </tr>
+
+        <!--Table with patient's medicines info and edit options-->
+
+        <form method="POST" action="add_medicines.php" class="patient-medicine-info-container">
+
+            <div class="table-responsive">
+            
+                <table class="styled-table medicine-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Medicine</th>
+                            <th>Morning</th>
+                            <th>Afternoon</th>
+                            <th>Evening</th>
+                            <th>Night</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medicine-table-body">
+
                     <?php
 
-                    //Display all info from database table and link to answersheet
-                    $index = 0;
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "  
-       <tr>  
-         <td>" . $row['id'] . "</td>  
-         <td>" . $row['is_checked'] . "</td>  
-         <td>" . $row['marks'] . "</td>  
-         <td>" . $row['attendance'] . "</td>  
-       </tr>  
-        ";
-                        $index++;
-                    }
+                    //Display all patient info from database
 
-                    // Close connection 
-                    mysqli_close($conn);
+                    while ($row = mysqli_fetch_array($result)) {
+
+                        echo "
+                                <tr>
+                                    <td>" . $row['id'] . "</td>
+                                    <td>" . $row['medicine'] . "</td>
+                                    <td>
+                                        <div class='table-icon-container'>"
+                                        . (($row['morning']) == true
+                                        ? ($row['morning'] == 'Taken'
+                                        ? "<input type='img' class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                                        : "<input type='img' class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                                        : "<input type='img' class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                        </div>
+                                    </td>
+                
+                                    <td>
+                                        <div class='table-icon-container'>"
+                                        . (($row['afternoon']) == true
+                                        ? ($row['afternoon'] == 'Taken'
+                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class='table-icon-container'>"
+                                        . (($row['evening']) == true
+                                        ? ($row['evening'] == 'Taken'
+                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class='table-icon-container'>"
+                                        . (($row['night']) == true
+                                        ? ($row['night'] == 'Taken'
+                                        ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                                        : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                        </div>
+                                    </td>
+                
+                                </tr>
+                
+                            ";
+                    }
 
                     ?>
 
+                        <!-- Template for adding new medicines -->
+                        <template id="new-medicine-row-template">
+
+                            <?php 
+                            
+                             //Get the next medicine id from database
+                             $sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'patient_medicines' AND table_schema = DATABASE( )";
+                             $result = mysqli_query($conn, $sql);
+                             $row = mysqli_fetch_array($result);
+                             $new_medicine_id = $row['AUTO_INCREMENT'];
+                            
+                             // Close Connection
+                             mysqli_close($conn);
+
+                            ?>
+                            <tr>
+
+                                <td>
+                                    <?php echo "$new_medicine_id"; ?>
+                                </td>
+
+                                <td>
+                                    <div class="table-icon-container">
+                                        <input type="text" id="new-medicine-input" name="new-medicine-input" required>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="table-icon-container"> 
+                                        <input type="checkbox" name="to-take-morning" id="to-take-morning" value="Prescribed" class="ui-icon">
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="table-icon-container">
+                                        <input type="checkbox" name="to-take-afternoon" id="to-take-afternoon" value="Prescribed" class="ui-icon">
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="table-icon-container">
+                                        <input type="checkbox" name="to-take-evening" id="to-take-evening" value="Prescribed" class="ui-icon">
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="table-icon-container">
+                                        <input type="checkbox" name="to-take-night" id="to-take-night" value="Prescribed" class="ui-icon">
+                                    </div>
+                                </td>
+
+                                <td></td>
+                                
+                            </tr>
+                        </template>
+
+                    </tbody>
                 </table>
-            </center>
-        </div>
+            </div>
+                
+                <div class="add-medicine-form">
+                   
+                    <input type='image' id="add-medicine-button" class='ui-icon-big' src='img/plus-button.png' alt='Add medicine'/>
+                   
+                    <input type='image' id="submit-medicine-list-button" class='ui-icon-big' src='img/check-mark-tick-green.png' alt='Submit medicines list'/>
+
+                    <?php echo "<input type='number' value='" . $patient_id ."' id='patient-id' name='patient-id' hidden readonly>"  ?>
+
+                    <?php echo "<input type='number' value='" . $doctor_id ."' id='doctor-id' name='doctor-id' hidden readonly>"  ?>
+
+                </div>
+
+        </form>  
+            
     </main>
 </body>
 
