@@ -21,10 +21,10 @@ $patient_age = mysqli_fetch_array($patient_age);
 $patient_age = $patient_age[0];
 
 
-$patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
-$patient_medications_prescribed = mysqli_fetch_array($patient_medications_prescribed);
+$total_patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
+$total_patient_medications_prescribed = mysqli_fetch_array($total_patient_medications_prescribed);
 
-$patient_medications_prescribed = $patient_medications_prescribed[0]; 
+$total_patient_medications_prescribed = $total_patient_medications_prescribed[0]; 
 
 if ($patient_bmi < 16) $bmi_style = "bmi-severely-underweight";
 if ($patient_bmi < 17) $bmi_style = "bmi-underweight";
@@ -137,7 +137,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                             <div class='medications-prescribed-count'>
                                 <p>Medications Prescribed</p>
                                 <p>
-                                    " . $patient_medications_prescribed . "
+                                    " . $total_patient_medications_prescribed . "
                                 </p>
                             </div>
                             <div class='patient-bmi-value'>
