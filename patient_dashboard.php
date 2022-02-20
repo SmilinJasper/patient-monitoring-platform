@@ -170,54 +170,60 @@ $doctor_id = $doctor_id[0];
                 while ($row = mysqli_fetch_array($result)) {
 
                     echo "
-                            <tr>
-                                <td>" . $row['id'] . "</td>
-                                <td>" . $row['medicine'] . "</td>
-                                <td>
-                                    <div class='table-icon-container'>
-                                    <form action='mark_medicine.php'>"
-                                    . (($row['morning']) == true
-                                    ? ($row['morning'] == 'Taken'
-                                    ? "<label for='check-medicine'><img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'></label>
-                                    <input type='checkmark'>"
-                                    : "<label for='check-medicine'><img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'></label>
-                                    <input type='checkmark'>")  . "
-                                    </form>
-                                    </div>
-                                </td>
-            
-                                <td>
-                                    <div class='table-icon-container'>"
-                                    . (($row['afternoon']) == true
-                                    ? ($row['afternoon'] == 'Taken'
-                                    ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                                    : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                    </div>
-                                </td>
+                    <tr>
+                        <td>" . $row['id'] . "</td>
+                        <td>" . $row['medicine'] . "</td>
+                        <td>
+                            <div class='table-icon-container'>
+                                <form action='mark_medicine.php'>"
+                                . (($row['morning']) == true
+                                ? ($row['morning'] == 'Taken'
+                                ? " <label for='medicine-checkmark'>
+                                        <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
+                                    </label>"
+                                : " <label for='medicine-checkmark'>
+                                        <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
+                                    </label>")
+                                : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+                                    <input type='checkmark' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark'>
+                                    <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
+                                    <input type='text' value='Morning' id='medicine-time' name='medicine-time' readonly hidden>
+                                </form>
+                            </div>
+                        </td>
+    
+                        <td>
+                            <div class='table-icon-container'>"
+                            . (($row['afternoon']) == true
+                            ? ($row['afternoon'] == 'Taken'
+                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            </div>
+                        </td>
 
-                                <td>
-                                    <div class='table-icon-container'>"
-                                    . (($row['evening']) == true
-                                    ? ($row['evening'] == 'Taken'
-                                    ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                                    : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                    </div>
-                                </td>
+                        <td>
+                            <div class='table-icon-container'>"
+                            . (($row['evening']) == true
+                            ? ($row['evening'] == 'Taken'
+                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            </div>
+                        </td>
 
-                                <td>
-                                    <div class='table-icon-container'>"
-                                    . (($row['night']) == true
-                                    ? ($row['night'] == 'Taken'
-                                    ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                                    : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
-                                    </div>
-                                </td>
-            
-                            </tr>
-            
+                        <td>
+                            <div class='table-icon-container'>"
+                            . (($row['night']) == true
+                            ? ($row['night'] == 'Taken'
+                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
+                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
+                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            </div>
+                        </td>
+    
+                    </tr>
+    
                         ";
                 }
 
