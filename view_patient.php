@@ -165,9 +165,9 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
         <form method="POST" action="add_medicines.php" class="patient-medicine-info-container">
 
-            <div class="table-responsive">
+            <div class="table-responsive medicine-table-container">
             
-                <table class="styled-table medicine-table">
+                <table class="styled-table">
                     <thead>
                         <tr>
                             <th>Id</th>

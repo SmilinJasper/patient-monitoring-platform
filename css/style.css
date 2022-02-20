@@ -382,7 +382,6 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: max-content;
     margin: 0;
     padding: 0px 20px;
     overflow: auto;
@@ -630,6 +629,10 @@ div.patient-bmi-value {
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 1em;
+}
+
+.medicine-table-container {
+    width: max-content;
 }
 
 .table-icon-container {
