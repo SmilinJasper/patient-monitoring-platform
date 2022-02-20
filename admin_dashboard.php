@@ -32,7 +32,6 @@
     <main class="page-wrapper">
 
         <section class="add-user">
-            <a class="button button__add-user" href="patient_registration_form.php">Add New Patient</a>
             <a class="button button__add-user" href="doctor_registration_form.php">Add New Doctor</a>
         </section>
 
