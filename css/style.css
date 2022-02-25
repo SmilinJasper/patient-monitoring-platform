@@ -572,6 +572,7 @@ div.basic-info-container header {
     height: 20px;
     width: fit-content;
     margin-left: 10px;
+    font-size-adjust: 0.5;
     border: none;
     outline: none;
     background: transparent;
