@@ -22,7 +22,6 @@ $patient_age = $patient_age[0];
 
 $total_patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
 $total_patient_medications_prescribed = mysqli_fetch_array($total_patient_medications_prescribed);
-
 $total_patient_medications_prescribed = $total_patient_medications_prescribed[0]; 
 
 if ($patient_bmi < 16) $bmi_style = "bmi-severely-underweight";
@@ -82,8 +81,8 @@ $doctor_id = $doctor_id[0];
             <h1>Your Doctor</h1>
         </header>
 
-        <!--Answersheets info-->
-        <div class="patient-info-container">
+        <!--Doctor and patient info-->
+        <div class="basic-info-container">
 
             <header>
                 <h1>YOUR DOCTOR</h1>
@@ -96,37 +95,37 @@ $doctor_id = $doctor_id[0];
 
             while ($row = mysqli_fetch_array($result)) {
                 echo
-                "<!--Patient info-->
+                "<!--Doctor info-->
 
-                        <div class='main-patient-info-container'>
-                            <div class='patient-info'>
+                        <div class='info-container'>
+                            <div>
                                 <p>Name:</p>
-                                <p class='patient-info-value'>" . $row['name'] . "</p>
+                                <p class='info-value'>" . $row['name'] . "</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Credentials:</p>
-                                <p class='patient-info-value'>" . $row['credentials'] . "<p>
+                                <p class='info-value'>" . $row['credentials'] . "<p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Experience:</p>
-                                <p class='patient-info-value'>" . $row['experience'] . "</p>
+                                <p class='info-value'>" . $row['experience'] . "</p>
                             </div>
 
                         </div>
 
-                        <!--Extra patient info-->
-                        <div class='extra-patient-info-container'>
+                        <!--Patient info-->
+                        <div class='patient-info-container'>
                             <div class='medications-prescribed-count'>
                                 <p>Medications Prescribed</p>
                                 <p>
-                                    " . $patient_medications_prescribed . "
+                                    " . $total_patient_medications_prescribed . "
                                 </p>
                             </div>
-                            <div class='patient-bmi-value'>
+                            <div class='bmi-value'>
                                 <p>BMI</p>
-                                <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
+                                <p class='" . $bmi_style . "'>" . $patient_bmi . "</p>
                             </div>
                         </div>";
             }

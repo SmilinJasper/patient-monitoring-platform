@@ -79,8 +79,8 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
             <h1>Patient Info</h1>
         </header>
 
-        <!--Answersheets info-->
-        <div class="patient-info-container">
+        <!--Patient info-->
+        <div class="basic-info-container">
 
             <header>
                 <h1>YOUR PATIENT</h1>
@@ -95,52 +95,52 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                 echo
                 "<!--Patient info-->
 
-                        <div class='main-patient-info-container'>
-                            <div class='patient-info'>
+                        <div class='info-container'>
+                            <div>
                                 <p>Name:</p>
-                                <p class='patient-info-value'>" . $row['name'] . "</p>
+                                <p class='info-value'>" . $row['name'] . "</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Age:</p>
-                                <p class='patient-info-value'>" . $row['age'] . "<p>
+                                <p class='info-value'>" . $row['age'] . "<p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Date of Birth:</p>
-                                <p class='patient-info-value'>" . $row['date_of_birth'] . "</p>
+                                <p class='info-value'>" . $row['date_of_birth'] . "</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Blood Group:</p>
-                                <p class='patient-info-value'>" . $row['blood_group'] . "</p>
+                                <p class='info-value'>" . $row['blood_group'] . "</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Height:</p>
-                                <p class='patient-info-value'>" . $row['height'] . " cm</p>
+                                <p class='info-value'>" . $row['height'] . " cm</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Weight:</p>
-                                <p class='patient-info-value'>" . $row['weight'] . " kg</p>
+                                <p class='info-value'>" . $row['weight'] . " kg</p>
                             </div>
 
-                            <div class='patient-info'>
+                            <div>
                                 <p>Contact No:</p>
-                                <p class='patient-info-value'>" . $row['contact_number'] . "</p>
+                                <p class='info-value'>" . $row['contact_number'] . "</p>
                             </div>
                         </div>
 
                         <!--Extra patient info-->
-                        <div class='extra-patient-info-container'>
+                        <div class='patient-info-container'>
                             <div class='medications-prescribed-count'>
                                 <p>Medications Prescribed</p>
                                 <p>
                                     " . $total_patient_medications_prescribed . "
                                 </p>
                             </div>
-                            <div class='patient-bmi-value'>
+                            <div class='bmi-value'>
                                 <p>BMI</p>
                                 <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
                             </div>
