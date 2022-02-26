@@ -48,7 +48,7 @@ $doctor_id = $doctor_id[0];
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="js/update_page.js"></script>
-    <script defer src="js/add_medicine.js"></script>
+    <script defer src="js/handle_medicine_checkmark.js"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,17 +174,18 @@ $doctor_id = $doctor_id[0];
                         <td>" . $row['medicine'] . "</td>
                         <td>
                             <div class='table-icon-container'>
-                                <form action='mark_medicine.php'>"
+                                <form action='mark_medicine.php' id='mark-medicine-form'>"
                                 . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
-                                ? " <label for='medicine-checkmark'>
+                                ? " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
-                                    </label>"
-                                : " <label for='medicine-checkmark'>
+                                    </label>
+                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' checked hidden>"
+                                : " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
-                                    </label>")
+                                    </label>
+                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' hidden>")
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
-                                    <input type='checkmark' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark'>
                                     <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
                                     <input type='text' value='Morning' id='medicine-time' name='medicine-time' readonly hidden>
                                 </form>
