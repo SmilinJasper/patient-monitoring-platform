@@ -2,7 +2,7 @@ const medicineCheckmark = document.getElementById('medicine-checkmark');
 const medicineCheckmarkLabel = document.getElementById('medicine-checkmark-label');
 const markMedicineForm = document.getElementById('mark-medicine-form');
 
-medicineCheckmark.addEventListener('change', handleMedicineCheckmark());
+document.addEventListener('click', handleMedicineCheckmark);
 
 function handleMedicineCheckmark() {
 
@@ -10,7 +10,6 @@ function handleMedicineCheckmark() {
         medicineCheckmarkLabel.innerHTML = `<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>`
 
         console.log('Medicine is taken');
-
 
         return;
     }
