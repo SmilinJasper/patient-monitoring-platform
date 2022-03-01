@@ -174,17 +174,17 @@ $doctor_id = $doctor_id[0];
                         <td>" . $row['medicine'] . "</td>
                         <td>
                             <div class='table-icon-container'>
-                                <form action='mark_medicine.php' id='mark-medicine-form'>"
+                                <form action='mark_medicine.php' method='POST' id='mark-medicine-form'>"
                                 . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
                                 ? " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
-                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' checked hidden>"
+                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
                                 : " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
-                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
                                     <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
                                     <input type='text' value='Morning' id='medicine-time' name='medicine-time' readonly hidden>
