@@ -22,3 +22,4 @@ if (mysqli_query($conn, $sql)) {
 
 header("location: view_patient.php?id=". $patient_id ."&doctor-id=". $doctor_id);
 
+mysqli_close($conn);
