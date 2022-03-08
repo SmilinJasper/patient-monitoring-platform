@@ -37,6 +37,30 @@ $doctor_id = mysqli_query($conn, "SELECT doctor_id FROM patient_profiles where i
 $doctor_id = mysqli_fetch_array($doctor_id);
 $doctor_id = $doctor_id[0];
 
+// Handling medicine checkmark updations
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $medicine_taken = isset($_POST['medicine-checkmark']) ? $_POST['medicine-checkmark'] : null;
+    $medicine_id = $_POST['medicine-id'];
+    $medicine_time = $_POST['medicine-time'];
+    $patient_id = $_POST['patient-id'];
+    
+    if($medicine_taken == "Taken"){
+      $sql = "UPDATE patient_medicines SET $medicine_time = 'Taken' WHERE id = '$medicine_id'";
+    } else {
+      $sql = "UPDATE patient_medicines SET $medicine_time = 'Prescribed' WHERE id = '$medicine_id'";
+    }
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
+            window.location.href = 'patient_dashboard.php?id=$patient_id';
+            </script>";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+ 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +72,7 @@ $doctor_id = $doctor_id[0];
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="js/update_page.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script defer src="js/handle_medicine_checkmark.js"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
@@ -172,24 +197,37 @@ $doctor_id = $doctor_id[0];
                     <tr>
                         <td>" . $row['id'] . "</td>
                         <td>" . $row['medicine'] . "</td>
+
                         <td>
+
                             <div class='table-icon-container'>
+                                
                                 <form action='mark_medicine.php' method='POST' id='mark-medicine-form'>"
+
                                 . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
                                 ? " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
-                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+
+                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden'>"
+
                                 : " <label for='medicine-checkmark' id='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
+
                                     <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+
                                     <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
                                     <input type='text' value='Morning' id='medicine-time' name='medicine-time' readonly hidden>
+                                    <input type='number' value='" . $patient_id . "' id='patient-id' name='patient-id' readonly checked hidden>
+                                    
                                 </form>
+
                             </div>
+
                         </td>
     
                         <td>
@@ -226,6 +264,8 @@ $doctor_id = $doctor_id[0];
     
                         ";
                 }
+
+                mysqli_close($conn);
 
                 ?>
 
