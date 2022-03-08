@@ -202,27 +202,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <div class='table-icon-container'>
                                 
-                                <form action='mark_medicine.php' method='POST' id='mark-medicine-form'>"
+                                <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
 
                                 . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
-                                ? " <label for='medicine-checkmark' id='medicine-checkmark-label'>
+                                ? " <label for='medicine-checkmark-morning' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden'>"
+                                    <input type='checkbox' id='medicine-checkmark-morning' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark' id='medicine-checkmark-label'>
+                                : " <label for='medicine-checkmark-morning' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark-morning' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
 
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
 
-                                    <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
-                                    <input type='text' value='Morning' id='medicine-time' name='medicine-time' readonly hidden>
-                                    <input type='number' value='" . $patient_id . "' id='patient-id' name='patient-id' readonly checked hidden>
+                                    <input type='number' value='" . $row['id'] . "' class='medicine-id' name='medicine-id' readonly hidden>
+                                    <input type='text' value='Morning' class='medicine-time' name='medicine-time' readonly hidden>
+                                    <input type='number' value='" . $patient_id . "' class='patient-id' name='patient-id' readonly checked hidden>
                                     
                                 </form>
 
@@ -231,33 +231,99 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </td>
     
                         <td>
-                            <div class='table-icon-container'>"
-                            . (($row['afternoon']) == true
-                            ? ($row['afternoon'] == 'Taken'
-                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            
+                            <div class='table-icon-container'>
+                                
+                                <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
+
+                                . (($row['afternoon']) == true
+                                ? ($row['afternoon'] == 'Taken'
+                                ? " <label for='medicine-checkmark-afternoon' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-afternoon' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+
+                                : " <label for='medicine-checkmark-afternoon' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-afternoon' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+
+                                : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+
+                                    <input type='number' value='" . $row['id'] . "' class='medicine-id' name='medicine-id' readonly hidden>
+                                    <input type='text' value='Afternoon' class='medicine-time' name='medicine-time' readonly hidden>
+                                    <input type='number' value='" . $patient_id . "' class='patient-id' name='patient-id' readonly checked hidden>
+                            
+                                </form>
+
                             </div>
+
                         </td>
 
                         <td>
-                            <div class='table-icon-container'>"
-                            . (($row['evening']) == true
-                            ? ($row['evening'] == 'Taken'
-                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            
+                            <div class='table-icon-container'>
+                                
+                                <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
+
+                                . (($row['evening']) == true
+                                ? ($row['evening'] == 'Taken'
+                                ? " <label for='medicine-checkmark-evening' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-evening' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+
+                                : " <label for='medicine-checkmark-evening' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-evening' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+
+                                : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+
+                                    <input type='number' value='" . $row['id'] . "' class='medicine-id' name='medicine-id' readonly hidden>
+                                    <input type='text' value='Evening' class='medicine-time' name='medicine-time' readonly hidden>
+                                    <input type='number' value='" . $patient_id . "' class='patient-id' name='patient-id' readonly checked hidden>
+                            
+                                </form>
+
                             </div>
+
                         </td>
 
                         <td>
-                            <div class='table-icon-container'>"
-                            . (($row['night']) == true
-                            ? ($row['night'] == 'Taken'
-                            ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'"
-                            : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>")
-                            : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                            
+                            <div class='table-icon-container'>
+                                
+                                <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
+
+                                . (($row['night']) == true
+                                ? ($row['night'] == 'Taken'
+                                ? " <label for='medicine-checkmark-night' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-night' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+
+                                : " <label for='medicine-checkmark-night' class='medicine-checkmark-label'>
+                                        <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
+                                    </label>
+
+                                    <input type='checkbox' id='medicine-checkmark-night' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+
+                                : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
+
+                                    <input type='number' value='" . $row['id'] . "' class='medicine-id' name='medicine-id' readonly hidden>
+                                    <input type='text' value='Night' class='medicine-time' name='medicine-time' readonly hidden>
+                                    <input type='number' value='" . $patient_id . "' class='patient-id' name='patient-id' readonly checked hidden>
+                            
+                                </form>
+
                             </div>
+
                         </td>
     
                     </tr>

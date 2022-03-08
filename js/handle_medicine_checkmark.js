@@ -1,8 +1,7 @@
-const medicineCheckmark = document.getElementById('medicine-checkmark');
-const medicineCheckmarkLabel = document.getElementById('medicine-checkmark-label');
-const markMedicineForm = document.getElementById('mark-medicine-form');
+const medicineCheckmarkElements = document.getElementsByClassName('medicine-checkmark');
 
-medicineCheckmark.addEventListener('change', () => {
-    markMedicineForm.submit();
-
-});
+for (let i = 0; i < medicineCheckmarkElements.length; i++) {
+    medicineCheckmarkElements[i].addEventListener('change', () => {
+        medicineCheckmarkElements[i].closest('form').submit();
+    });
+}
