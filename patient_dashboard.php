@@ -182,7 +182,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <th>Afternoon</th>
                         <th>Evening</th>
                         <th>Night</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody id="medicine-table-body">
