@@ -676,10 +676,6 @@ div.bmi-value {
     background: transparent;
 }
 
-#patient-id {
-    display: none;
-}
-
 .evaluation-table {
     table-layout: fixed;
     width: 100%;
