@@ -19,6 +19,15 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+$sql = "SELECT doctor_id FROM patient_profiles WHERE id='$patient_id'";
+$result = $conn->query($sql);
+$row = mysqli_fetch_assoc($result);
+$doctor_id = $row['doctor_id'];
+
+$to_user_type ='doctor';
+
+$sql = "INSERT INTO notifications VALUES('$notification_title', '$notification_message', '$to_user_type', '$doctor_id')";
+
 die();
 
 ?>
