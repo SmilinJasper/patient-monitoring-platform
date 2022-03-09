@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Feb 16, 2022 at 09:40 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: Mar 09, 2022 at 09:46 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,13 @@ CREATE TABLE `admin_credentials` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin_credentials`
+--
+
+INSERT INTO `admin_credentials` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'selvin');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +51,13 @@ CREATE TABLE `doctor_credentials` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor_credentials`
+--
+
+INSERT INTO `doctor_credentials` (`id`, `username`, `password`) VALUES
+(1, 'doctor', '$2y$10$2M98hInHoF8KcREyTD1v8u4NR5/vCR.XnlcafREQ9nAYWEhOscspy');
 
 -- --------------------------------------------------------
 
@@ -58,6 +72,13 @@ CREATE TABLE `doctor_profiles` (
   `experience` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `doctor_profiles`
+--
+
+INSERT INTO `doctor_profiles` (`id`, `name`, `credentials`, `experience`) VALUES
+(1, 'Selvin', 'MBBS, MD, DM', '10 Years, 6 Months');
+
 -- --------------------------------------------------------
 
 --
@@ -70,6 +91,13 @@ CREATE TABLE `patient_credentials` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `patient_credentials`
+--
+
+INSERT INTO `patient_credentials` (`id`, `username`, `password`) VALUES
+(1, 'patient', '$2y$10$x8JJnL.HAvLdF2BrESGMbO6ZNwxxNfeEoD2NrNa7mvBP1ZHbSZ9Zu');
+
 -- --------------------------------------------------------
 
 --
@@ -79,12 +107,20 @@ CREATE TABLE `patient_credentials` (
 CREATE TABLE `patient_medicines` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
   `medicine` varchar(255) NOT NULL,
   `morning` varchar(255) NOT NULL,
   `afternoon` varchar(255) NOT NULL,
   `evening` varchar(255) NOT NULL,
   `night` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_medicines`
+--
+
+INSERT INTO `patient_medicines` (`id`, `patient_id`, `doctor_id`, `medicine`, `morning`, `afternoon`, `evening`, `night`) VALUES
+(1, 1, 1, 'Dolo 650', 'Prescribed', 'Prescribed', '', 'Prescribed');
 
 -- --------------------------------------------------------
 
@@ -104,6 +140,13 @@ CREATE TABLE `patient_profiles` (
   `bmi` int(255) NOT NULL,
   `contact_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_profiles`
+--
+
+INSERT INTO `patient_profiles` (`id`, `doctor_id`, `name`, `date_of_birth`, `age`, `blood_group`, `height`, `weight`, `bmi`, `contact_number`) VALUES
+(1, 1, 'Sel', '2001-04-03', '20', 'B+', 173, 63, 21, '9344012834');
 
 --
 -- Indexes for dumped tables
@@ -138,7 +181,8 @@ ALTER TABLE `patient_credentials`
 --
 ALTER TABLE `patient_medicines`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `medicine_patient_id` (`patient_id`);
+  ADD KEY `medicine_patient_id` (`patient_id`),
+  ADD KEY `medicine_doctor_id` (`doctor_id`);
 
 --
 -- Indexes for table `patient_profiles`
@@ -155,25 +199,25 @@ ALTER TABLE `patient_profiles`
 -- AUTO_INCREMENT for table `admin_credentials`
 --
 ALTER TABLE `admin_credentials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `doctor_credentials`
 --
 ALTER TABLE `doctor_credentials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient_credentials`
 --
 ALTER TABLE `patient_credentials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient_medicines`
 --
 ALTER TABLE `patient_medicines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -189,6 +233,7 @@ ALTER TABLE `doctor_profiles`
 -- Constraints for table `patient_medicines`
 --
 ALTER TABLE `patient_medicines`
+  ADD CONSTRAINT `medicine_doctor_id` FOREIGN KEY (`doctor_id`) REFERENCES `doctor_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `medicine_patient_id` FOREIGN KEY (`patient_id`) REFERENCES `patient_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
