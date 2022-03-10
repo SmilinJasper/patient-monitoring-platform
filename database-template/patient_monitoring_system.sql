@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2022 at 09:46 PM
+-- Generation Time: Mar 10, 2022 at 11:41 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -82,6 +82,21 @@ INSERT INTO `doctor_profiles` (`id`, `name`, `credentials`, `experience`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `notification_time` date NOT NULL DEFAULT current_timestamp(),
+  `to_user_type` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient_credentials`
 --
 
@@ -120,7 +135,7 @@ CREATE TABLE `patient_medicines` (
 --
 
 INSERT INTO `patient_medicines` (`id`, `patient_id`, `doctor_id`, `medicine`, `morning`, `afternoon`, `evening`, `night`) VALUES
-(1, 1, 1, 'Dolo 650', 'Prescribed', 'Prescribed', '', 'Prescribed');
+(1, 1, 1, 'Dolo 650', 'Taken', 'Prescribed', '', 'Prescribed');
 
 -- --------------------------------------------------------
 
@@ -171,6 +186,12 @@ ALTER TABLE `doctor_profiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `patient_credentials`
 --
 ALTER TABLE `patient_credentials`
@@ -206,6 +227,12 @@ ALTER TABLE `admin_credentials`
 --
 ALTER TABLE `doctor_credentials`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patient_credentials`
