@@ -6,7 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="js/update_page.js"></script>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src='js/notify.js'></script>
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -25,6 +26,7 @@
 </nav>
 
 <body>
+
     <!--Background image-->
     <img class="wave" src="img/wave.png">
 
