@@ -1,11 +1,17 @@
 <?php
 
+// Include databse connection
+
 include "database.php";
+
+// Get the posted data for medicine checkmark
 
 $medicine_is_taken = isset($_POST['medicine-checkmark']) ? $_POST['medicine-checkmark'] : null;
 $medicine_id = $_POST['medicine-id'];
 $medicine_time = $_POST['medicine-time'];
 $patient_id = $_POST['patient-id'];
+
+// Update the medicine records
 
 if($medicine_is_taken == "Taken") {
   $sql = "UPDATE patient_medicines SET $medicine_time = 'Taken' WHERE id = '$medicine_id'";
@@ -19,6 +25,8 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+// Get data for notification from database
+
 $sql = "SELECT * FROM patient_profiles WHERE id='$patient_id'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
@@ -30,6 +38,8 @@ $sql = "SELECT * FROM patient_medicines WHERE id='$medicine_id'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 $medicine_name = $row['medicine'];
+
+// Add notification data to databse
 
 if ($medicine_is_taken){
   $notification_title = "$patient_name has taken $medicine_name";
@@ -51,5 +61,7 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+// CLose the connection
 
 mysqli_close($conn);
