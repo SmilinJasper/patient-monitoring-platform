@@ -20,6 +20,30 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-header("location: view_patient.php?id=". $patient_id ."&doctor-id=". $doctor_id);
+// Add notification data to databse
 
+$prescription_times = array();
+
+if ($to_take_morning == "Prescribed") array_push($prescription_times, "Morning");
+if ($to_take_afternoon == "Prescribed") array_push($prescription_times, "Afternoon");
+if ($to_take_evening == "Prescribed") array_push($prescription_times, "Evening");
+if ($to_take_night == "Prescribed") array_push($prescription_times, "Night");
+
+$notification_title = "Your doctor has prescribed you new medicine!";
+
+$notification_message = "You have been prescribed " . $new_medicine_input . " for " . implode(", ", $prescription_times) . ".";
+  
+$to_user_type ='patient';
+  
+$sql = "INSERT INTO notifications (title, message, to_user_type, patient_id) VALUES ('$notification_title', '$notification_message', '$to_user_type', '$patient_id')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New notification added successfully";
+  header("location: view_patient.php?id=". $patient_id ."&doctor-id=". $doctor_id);
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+  
+// CLose the connection
+  
 mysqli_close($conn);

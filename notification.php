@@ -7,7 +7,7 @@ $array = array();
 $rows = array();
 $data = array();
 
-$sql = 'SELECT * FROM notifications WHERE doctor_id = '.$_SESSION['id'];
+$sql = $_SESSION['user_type'] === 'doctor' ? 'SELECT * FROM notifications WHERE doctor_id = '.$_SESSION['id'] : 'SELECT * FROM notifications WHERE doctor_id = 0 AND patient_id = '.$_SESSION['id'];
 $notifList = $conn->query($sql);
 
 foreach ($notifList as $key) {
