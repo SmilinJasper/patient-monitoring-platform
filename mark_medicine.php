@@ -53,7 +53,7 @@ if (!$medicine_is_taken){
 
 $to_user_type ='doctor';
 
-$sql = "INSERT INTO notifications (title, message, to_user_type, user_id) VALUES ('$notification_title', '$notification_message', '$to_user_type', '$doctor_id')";
+$sql = "INSERT INTO notifications (title, message, to_user_type, doctor_id) VALUES ('$notification_title', '$notification_message', '$to_user_type', '$doctor_id')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New notification added successfully";
