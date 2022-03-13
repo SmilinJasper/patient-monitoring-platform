@@ -206,17 +206,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
-                                ? " <label for='medicine-checkmark-morning' class='medicine-checkmark-label'>
+                                ? " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-morning' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+                                    <input type='checkbox' id='medicine-checkmark-morning-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-morning' class='medicine-checkmark-label'>
+                                : " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-morning' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark-morning-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
 
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
 
@@ -238,17 +238,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 . (($row['afternoon']) == true
                                 ? ($row['afternoon'] == 'Taken'
-                                ? " <label for='medicine-checkmark-afternoon' class='medicine-checkmark-label'>
+                                ? " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-afternoon' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+                                    <input type='checkbox' id='medicine-checkmark-afternoon-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-afternoon' class='medicine-checkmark-label'>
+                                : " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-afternoon' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark-afternoon-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
 
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
 
@@ -270,17 +270,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 . (($row['evening']) == true
                                 ? ($row['evening'] == 'Taken'
-                                ? " <label for='medicine-checkmark-evening' class='medicine-checkmark-label'>
+                                ? " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-evening' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+                                    <input type='checkbox' id='medicine-checkmark-evening-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-evening' class='medicine-checkmark-label'>
+                                : " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-evening' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark-evening-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
 
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
 
@@ -302,17 +302,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 . (($row['night']) == true
                                 ? ($row['night'] == 'Taken'
-                                ? " <label for='medicine-checkmark-night' class='medicine-checkmark-label'>
+                                ? " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-night' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
+                                    <input type='checkbox' id='medicine-checkmark-night-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-night' class='medicine-checkmark-label'>
+                                : " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
-                                    <input type='checkbox' id='medicine-checkmark-night' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
+                                    <input type='checkbox' id='medicine-checkmark-night-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' hidden>")
 
                                 : "  <img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>") . "
 
