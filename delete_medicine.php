@@ -12,7 +12,6 @@ include "database.php";
 //Get required values
 
 $medicine_id = $_POST['medicine-id'];
-$redirect_link = $_POST['redirect-link'];
 
 // Add notification data to database
 
@@ -28,7 +27,6 @@ $sql = "INSERT INTO notifications (title, message, to_user_type, patient_id) VAL
 
 if ($conn->query($sql) === TRUE) {
   echo "New notification added successfully";
-  header("location: " . $_SERVER['HTTP_REFERER']);
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -39,6 +37,7 @@ $sql = "DELETE FROM patient_medicines WHERE id='$medicine_id'";
 
 if ($conn->query($sql) === TRUE) {
   echo "Medicine deleted successfully";
+  header("location: " . $_SERVER['HTTP_REFERER']);
 } else {
   echo "Error deleting record: " . $conn->error;
 }
