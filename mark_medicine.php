@@ -1,6 +1,6 @@
 <?php
 
-// Include databse connection
+// Include database connection
 
 include "database.php";
 
@@ -39,7 +39,7 @@ $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 $medicine_name = $row['medicine'];
 
-// Add notification data to databse
+// Add notification data to database
 
 if ($medicine_is_taken){
   $notification_title = "$patient_name has taken $medicine_name";

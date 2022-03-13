@@ -1,6 +1,10 @@
 <?php
 
+// Start session to be able to access session variables
+
 SESSION_START();
+
+// Include database connection
 
 include 'database.php';
 $array = array();
@@ -8,8 +12,11 @@ $rows = array();
 $data = array();
 $_SESSION['notification_ids'] = array();
 
+// Select all notifications for user
 $sql = $_SESSION['user_type'] === 'doctor' ? 'SELECT * FROM notifications WHERE doctor_id = '.$_SESSION['id'] : 'SELECT * FROM notifications WHERE doctor_id = 0 AND patient_id = '.$_SESSION['id'];
 $notifList = $conn->query($sql);
+
+// Send notifications to javascript
 
 foreach ($notifList as $key) {
     $data['title'] = $key['title'];

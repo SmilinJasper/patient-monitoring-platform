@@ -14,7 +14,7 @@ include "database.php";
 $medicine_id = $_POST['medicine-id'];
 $redirect_link = $_POST['redirect-link'];
 
-// Add notification data to databse
+// Add notification data to database
 
 $medicine_name = mysqli_query($conn, "SELECT medicine FROM patient_medicines where id = '$medicine_id'");
 $medicine_name = mysqli_fetch_array($medicine_name);

@@ -1,8 +1,14 @@
 <?php
 
+// Start session to be able to access session variables
+
 session_start();
 
+// Include database connection
+
 include "database.php";
+
+// Delete all notifications
 
 foreach ($_SESSION['notification_ids'] as $id) {
 
@@ -15,6 +21,8 @@ foreach ($_SESSION['notification_ids'] as $id) {
     }
 
 }
+
+// Empty the notification ids array
 
 $_SESSION['notification_ids'] = array();
 

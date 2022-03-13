@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
-        // Save patient profile details in the databse
+        // Save patient profile details in the database
         $patient_id = mysqli_query($conn, "SELECT max(id) FROM patient_credentials");
         $patient_id = mysqli_fetch_array($patient_id);
         $patient_id = $patient_id[0];
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_contact_number = $_POST["patient-contact-number"];
         $patient_bmi = round($patient_weight / ($patient_height / 100 * $patient_height / 100));
 
-        // Save doctor profile details in the databse
+        // Save doctor profile details in the database
         $sql = "INSERT INTO patient_profiles (id, doctor_id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$doctor_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
