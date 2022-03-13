@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 11:41 AM
+-- Generation Time: Mar 13, 2022 at 09:54 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -89,9 +89,10 @@ CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `notification_time` date NOT NULL DEFAULT current_timestamp(),
+  `time` date NOT NULL DEFAULT current_timestamp(),
   `to_user_type` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `doctor_id` int(11) DEFAULT NULL,
+  `patient_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -135,7 +136,8 @@ CREATE TABLE `patient_medicines` (
 --
 
 INSERT INTO `patient_medicines` (`id`, `patient_id`, `doctor_id`, `medicine`, `morning`, `afternoon`, `evening`, `night`) VALUES
-(1, 1, 1, 'Dolo 650', 'Taken', 'Prescribed', '', 'Prescribed');
+(1, 1, 1, 'Dolo 650', 'Prescribed', 'Taken', '', 'Taken'),
+(14, 1, 1, 'sad', 'Prescribed', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -189,7 +191,9 @@ ALTER TABLE `doctor_profiles`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notification_doctor_id` (`doctor_id`),
+  ADD KEY `notification_patient_id` (`patient_id`);
 
 --
 -- Indexes for table `patient_credentials`
@@ -232,7 +236,7 @@ ALTER TABLE `doctor_credentials`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `patient_credentials`
@@ -244,7 +248,7 @@ ALTER TABLE `patient_credentials`
 -- AUTO_INCREMENT for table `patient_medicines`
 --
 ALTER TABLE `patient_medicines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -255,6 +259,13 @@ ALTER TABLE `patient_medicines`
 --
 ALTER TABLE `doctor_profiles`
   ADD CONSTRAINT `doctor_profile_id` FOREIGN KEY (`id`) REFERENCES `doctor_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notification_doctor_id` FOREIGN KEY (`doctor_id`) REFERENCES `doctor_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notification_patient_id` FOREIGN KEY (`patient_id`) REFERENCES `patient_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `patient_medicines`
