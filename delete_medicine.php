@@ -14,19 +14,9 @@ include "database.php";
 $medicine_id = $_POST['medicine-id'];
 $redirect_link = $_POST['redirect-link'];
 
-//Delete medicine where medicine id is given medicine id
-
-$sql = "DELETE FROM patient_medicines WHERE id='$medicine_id'";
-
-if ($conn->query($sql) === TRUE) {
-  echo "Medicine deleted successfully";
-} else {
-  echo "Error deleting record: " . $conn->error;
-}
-
 // Add notification data to databse
 
-$medicine_name = mysqli_query($conn, "SELECT medicine FROM patient_medicines where id = '$patient_id'");
+$medicine_name = mysqli_query($conn, "SELECT medicine FROM patient_medicines where id = '$medicine_id'");
 $medicine_name = mysqli_fetch_array($medicine_name);
 $medicine_name = $medicine_name[0];
 
@@ -43,6 +33,16 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
   
+//Delete medicine where medicine id is given medicine id
+
+$sql = "DELETE FROM patient_medicines WHERE id='$medicine_id'";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Medicine deleted successfully";
+} else {
+  echo "Error deleting record: " . $conn->error;
+}
+
 // CLose the connection
 
 mysqli_close($conn);
