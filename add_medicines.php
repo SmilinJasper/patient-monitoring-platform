@@ -20,7 +20,7 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-// Add notification data to databse
+// Add notification data to database
 
 $prescription_times = array();
 
