@@ -29,6 +29,12 @@ function showNotification() {
                             notification.close();
                         }, 5000);
                     };
+
+                    $.ajax({
+                        url: "delete_notifications.php",
+                        type: "POST"
+                    });
+
                 } else {}
             },
             error: function(jqXHR, textStatus, errorThrown) {}

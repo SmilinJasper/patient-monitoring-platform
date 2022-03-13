@@ -6,6 +6,7 @@ include 'database.php';
 $array = array();
 $rows = array();
 $data = array();
+$_SESSION['notification_ids'] = array();
 
 $sql = $_SESSION['user_type'] === 'doctor' ? 'SELECT * FROM notifications WHERE doctor_id = '.$_SESSION['id'] : 'SELECT * FROM notifications WHERE doctor_id = 0 AND patient_id = '.$_SESSION['id'];
 $notifList = $conn->query($sql);
@@ -23,16 +24,8 @@ foreach ($notifList as $key) {
         $data['url'] = 'view_patient.php?id=' . $key['patient_id'];
     }
 
-    $notification_id = $key['id'];
+    array_push($_SESSION['notification_ids'], $key['id']);
     
-    $sql = "DELETE FROM notifications WHERE id='$notification_id'";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Medicine deleted successfully";
-    } else {
-        echo "Error deleting record: " . $conn->error;
-    }
-
     $rows[] = $data;
 }
 

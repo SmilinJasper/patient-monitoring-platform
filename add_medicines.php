@@ -29,7 +29,7 @@ if ($to_take_afternoon == "Prescribed") array_push($prescription_times, "Afterno
 if ($to_take_evening == "Prescribed") array_push($prescription_times, "Evening");
 if ($to_take_night == "Prescribed") array_push($prescription_times, "Night");
 
-$notification_title = "Your doctor has prescribed you new medicine!";
+$notification_title = "Your doctor has prescribed you " . $new_medicine_input . "!";
 
 $notification_message = "You have been prescribed " . $new_medicine_input . " for " . implode(", ", $prescription_times) . ".";
   
