@@ -278,7 +278,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="input-div">
                     <div class="i">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-phone"></i>
                     </div>
                     <div class="div">
                         <label for="input-contact-number">
