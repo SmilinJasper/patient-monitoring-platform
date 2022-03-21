@@ -139,6 +139,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class='info-value'>" . $row['experience'] . "</p>
                             </div>
 
+                            <div>
+                                <p>Contact No:</p>
+                                <a href=tel:" . $row['contact_number'] . "<p class='info-value'>" . $row['contact_number'] . "</a>
+                            </div>
+
                         </div>
 
                         <!--Patient info-->

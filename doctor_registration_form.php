@@ -97,6 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doctor_experience_years = $_POST["experience-years"];
     $doctor_experience_months = $_POST["experience-months"];
     $doctor_experience = "";
+    $doctor_contact_number = $_POST["doctor-contact-number"];
     
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         
@@ -143,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Save doctor profile details in the database
-        $sql = "INSERT INTO doctor_profiles (id, name, credentials, experience) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience')";
+        $sql = "INSERT INTO doctor_profiles (id, name, credentials, experience, contact_number) VALUES ('$doctor_id', '$doctor_name', '$doctor_credentials', '$doctor_experience', '$doctor_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
             // Redirect to login page
@@ -290,6 +291,16 @@ mysqli_close($conn);
                 
                 </div>
                 
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-phone"></i>
+                    </div>    
+                    <div class="div">
+                        <h5>Contact Number</h5>
+                        <input id="input-contact-number" name="doctor-contact-number" type="tel" class="input input-contact-number" required>
+                    </div>
+                </div>
+
                 <input id="login" type="submit" class="btn login" value="Create Account">
 
             </form>
