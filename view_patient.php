@@ -128,7 +128,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
                             <div>
                                 <p>Contact No:</p>
-                                <a href=tel:" . $row['contact_number'] . "<p class='info-value'>" . $row['contact_number'] . "</a>
+                                <a class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
                                 </p>
                             </div>
                         </div>
