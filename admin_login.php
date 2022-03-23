@@ -97,6 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script defer type="text/javascript" src="js/login_input_animation.js"></script>
+    <script defer src="js/location.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,8 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--Login form-->
         <div class="login-content">
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
-                class="student-login-form login-form">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="student-login-form login-form">
 
                 <img src="img/avatar.svg">
 
@@ -167,6 +168,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
     </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
+        </div>
+
+
+        <div>
+
+            <h1>Contact Us</h1>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
+
+            </div=>
+
+    </footer>
 
 </body>
 

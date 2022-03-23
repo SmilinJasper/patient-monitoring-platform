@@ -8,6 +8,8 @@
     <script src="js/update_page.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src='js/notify.js'></script>
+    <script defer src="js/location.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -86,6 +88,40 @@
             <?php echo "<a class='button add-patient-button' href='patient_registration_form.php?id=" . $doctor_id . "'>Add Patient</a>"; ?>
         </div>
     </main>
+
+        <!-- Footer -->
+
+        <footer>
+
+            <div>
+
+                <h1>OUR LOCATION</h1>
+                <div id="map"></div>
+
+            </div>
+
+
+            <div>
+
+                <h1>Contact Us</h1>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <span>+91-123-456-7890</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>1-8, 9th cross street,
+                        <br>Coimbatore,
+                        <br>Tamilnadu - 123456
+                    </span>
+                </p>
+
+                </div=>
+
+        </footer>
+
 </body>
 
 </html>

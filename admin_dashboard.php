@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="upload-form-body">
+<body>
 
     <!--Navigation bar-->
     <nav>
@@ -60,10 +60,10 @@
                     </tr>
                     <?php
 
-        //Display all info from doctor profiles table
-        $index = 0;
-        while ($row = mysqli_fetch_array($result)) {
-        echo "  
+                    //Display all info from doctor profiles table
+                    $index = 0;
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "  
        <tr>  
          <td>" . $row['id'] . "</td>  
          <td>" . $row['name'] . "</td>  
@@ -86,6 +86,40 @@
             </center>
         </div>
     </main>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
+        </div>
+
+
+        <div>
+
+            <h1>Contact Us</h1>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
+
+            </div=>
+
+    </footer>
+
 </body>
 
 </html>
