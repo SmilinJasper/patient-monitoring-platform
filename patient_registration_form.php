@@ -154,12 +154,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="login-content">
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
-                class="student-login-form login-form">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="student-login-form login-form">
 
                 <!-- Hidden input with doctor id -->
-                <input class="doctor-id" type="number" id="doctor-id" name="doctor-id" readonly
-                    value="<?php echo $_GET['id']; ?>">
+                <input class="doctor-id" type="number" id="doctor-id" name="doctor-id" readonly value="<?php echo $_GET['id']; ?>">
 
                 <h2 class="title">Register Patient</h2>
 
@@ -245,8 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-blood-group">
                             <h5>Blood Group</h5>
                         </label>
-                        <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3"
-                            required>
+                        <input id="input-blood-group" name="patient-blood-group" type="text" class="input" maxlength="3" required>
                     </div>
                 </div>
 
@@ -258,8 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-height">
                             <h5>Height (In CM)</h5>
                         </label>
-                        <input id="input-height" name="patient-height" type="number" class="input" min="1" maxlength="3"
-                            required>
+                        <input id="input-height" name="patient-height" type="number" class="input" min="1" maxlength="3" required>
                     </div>
                 </div>
 
@@ -271,8 +267,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-weight">
                             <h5>Weight (In KG)</h5>
                         </label>
-                        <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3"
-                            required>
+                        <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3" required>
                     </div>
                 </div>
 
@@ -284,8 +279,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-contact-number">
                             <h5>Contact Number</h5>
                         </label>
-                        <input id="input-contact-number" name="patient-contact-number" type="text" class="input"
-                            maxlength="10" required>
+                        <input id="input-contact-number" name="patient-contact-number" type="text" class="input" maxlength="10" required>
                     </div>
                 </div>
 
@@ -294,6 +288,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
         </div>
+
+        <!-- Footer -->
+
+        <footer>
+
+            <div>
+
+                <h1>OUR LOCATION</h1>
+                <div id="map"></div>
+
+            </div>
+
+            <div>
+
+                <h1>Contact Us</h1>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <span>+91-123-456-7890</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>1-8, 9th cross street,
+                        <br>Coimbatore,
+                        <br>Tamilnadu - 123456
+                    </span>
+                </p>
+
+                </div=>
+
+        </footer>
 
         <!--Javascript-->
         <script type="text/javascript" src="js/login_input_animation.js"></script>

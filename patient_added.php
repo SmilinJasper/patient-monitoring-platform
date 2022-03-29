@@ -43,6 +43,38 @@ $docotor_id = $_GET['id'];
 
         </main>
 
+        <!-- Footer -->
+
+        <footer>
+
+            <div>
+
+                <h1>OUR LOCATION</h1>
+                <div id="map"></div>
+
+            </div>
+
+            <div>
+
+                <h1>Contact Us</h1>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <span>+91-123-456-7890</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>1-8, 9th cross street,
+                        <br>Coimbatore,
+                        <br>Tamilnadu - 123456
+                    </span>
+                </p>
+
+                </div=>
+
+        </footer>
+
 </body>
 
 </html>

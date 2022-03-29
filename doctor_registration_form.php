@@ -98,49 +98,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doctor_experience_months = $_POST["experience-months"];
     $doctor_experience = "";
     $doctor_contact_number = $_POST["doctor-contact-number"];
-    
-    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
-        
-        if($doctor_experience_years != "" && $doctor_experience_months !="0") {
 
-            if($doctor_experience_years > 1 && $doctor_experience_months > 1) {
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+
+        if ($doctor_experience_years != "" && $doctor_experience_months != "0") {
+
+            if ($doctor_experience_years > 1 && $doctor_experience_months > 1) {
                 $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Months";
             }
 
-            if($doctor_experience_years > 1 && $doctor_experience_months == 1) {
+            if ($doctor_experience_years > 1 && $doctor_experience_months == 1) {
                 $doctor_experience = $doctor_experience_years . " Years, " . $doctor_experience_months . " Month";
             }
 
-            if($doctor_experience_years == 1 && $doctor_experience_months > 1) {
+            if ($doctor_experience_years == 1 && $doctor_experience_months > 1) {
                 $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Months";
             }
 
-            if($doctor_experience_years == 1 && $doctor_experience_months == 1) {
+            if ($doctor_experience_years == 1 && $doctor_experience_months == 1) {
                 $doctor_experience = $doctor_experience_years . " Year, " . $doctor_experience_months . " Month";
             }
-
         }
 
-        if($doctor_experience_years != "" && $doctor_experience_months == 0){
+        if ($doctor_experience_years != "" && $doctor_experience_months == 0) {
 
-            if($doctor_experience_years == 1) {
+            if ($doctor_experience_years == 1) {
                 $doctor_experience = $doctor_experience_years . " Year";
             }
 
-            if($doctor_experience_years > 1) {
+            if ($doctor_experience_years > 1) {
                 $doctor_experience = $doctor_experience_years . " Years";
             }
-
         }
 
-        if($doctor_experience_years == "" && $doctor_experience_months != ""){
+        if ($doctor_experience_years == "" && $doctor_experience_months != "") {
 
-            if($doctor_experience_months == 1) {
+            if ($doctor_experience_months == 1) {
                 $doctor_experience = $doctor_experience_months . " Month";
             } else {
-                $doctor_experience = $doctor_experience_months . " Months";            
+                $doctor_experience = $doctor_experience_months . " Months";
             }
-
         }
 
         // Save doctor profile details in the database
@@ -149,10 +146,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_query($conn, $sql)) {
             // Redirect to login page
             header("location: doctor_added.html");
-            } else {
+        } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
-        
     }
 }
 
@@ -201,10 +197,10 @@ mysqli_close($conn);
                 <h2 class="title">Register Doctor</h2>
 
                 <div class="login-error-message">
-                    <?php 
-                        echo "<p>" . $username_err . "</p>";
-                        echo "<p>" . $password_err . "</p>";                  
-                        echo "<p>" . $confirm_password_err . "</p>";
+                    <?php
+                    echo "<p>" . $username_err . "</p>";
+                    echo "<p>" . $password_err . "</p>";
+                    echo "<p>" . $confirm_password_err . "</p>";
                     ?>
                 </div>
 
@@ -241,7 +237,7 @@ mysqli_close($conn);
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-user"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <h5>Name</h5>
                         <input id="input-name" name="doctor-name" type="text" class="input input-username" required>
@@ -261,7 +257,7 @@ mysqli_close($conn);
                             <input id="mbbs" name="credentials[]" value="MBBS" type="checkbox" required>
                             <label for="mbbs">MBBS</label>
                         </div>
-                       
+
                         <div>
                             <input id="md" name="credentials[]" value="MD" type="checkbox">
                             <label for="md">MD</label>
@@ -276,7 +272,7 @@ mysqli_close($conn);
                 </div>
 
                 <div class="input-div-experience">
-                    
+
                     <div class="i">
                         <i class="fas fa-briefcase"></i>
                         <h5>Years of Experience</h5>
@@ -285,16 +281,16 @@ mysqli_close($conn);
                     <div class="values">
                         <input id="input-experience-years" name="experience-years" type="number" min="1">
                         <label for="input-experience-years">Years</label>
-                        <input id="input-experience-months" name="experience-months" type="number" required max="11" min="0">                    
+                        <input id="input-experience-months" name="experience-months" type="number" required max="11" min="0">
                         <label for="input-experience-months">Months</label>
                     </div>
-                
+
                 </div>
-                
+
                 <div class="input-div">
                     <div class="i">
                         <i class="fas fa-phone"></i>
-                    </div>    
+                    </div>
                     <div class="div">
                         <h5>Contact Number</h5>
                         <input id="input-contact-number" name="doctor-contact-number" type="tel" class="input input-contact-number" required>
@@ -306,6 +302,38 @@ mysqli_close($conn);
             </form>
 
         </div>
+
+        <!-- Footer -->
+
+        <footer>
+
+            <div>
+
+                <h1>OUR LOCATION</h1>
+                <div id="map"></div>
+
+            </div>
+
+            <div>
+
+                <h1>Contact Us</h1>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <span>+91-123-456-7890</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>1-8, 9th cross street,
+                        <br>Coimbatore,
+                        <br>Tamilnadu - 123456
+                    </span>
+                </p>
+
+                </div=>
+
+        </footer>
 
         <!--Javascript-->
         <script type="text/javascript" src="js/login_input_animation.js"></script>

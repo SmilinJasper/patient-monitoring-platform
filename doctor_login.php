@@ -114,57 +114,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
     </nav>
 
-        <!--Background images-->
-        <img class="wave" src="img/wave.png">
+    <!--Background images-->
+    <img class="wave" src="img/wave.png">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="img">
-                <img src="img/bg.svg">
-            </div>
+        <div class="img">
+            <img src="img/bg.svg">
+        </div>
 
-            <!--Login form-->
-            <div class="login-content">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
-                    class="staff-login-form login-form">
-                    <img src="img/avatar.svg">
+        <!--Login form-->
+        <div class="login-content">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="staff-login-form login-form">
+                <img src="img/avatar.svg">
 
-                    <h2 class="title">Welcome</h2>
+                <h2 class="title">Welcome</h2>
 
-                    <div class="login-error-message">
-                        <p><?php echo $login_err ?></p>
+                <div class="login-error-message">
+                    <p><?php echo $login_err ?></p>
+                </div>
+
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
                     </div>
-
-                    <div class="input-div one">
-                        <div class="i">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="div">
-                            <h5>Username</h5>
-                            <input id="input-username" name="username" type="text" class="input input-username">
-                        </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <input id="input-username" name="username" type="text" class="input input-username">
                     </div>
+                </div>
 
-                    <div class="input-div pass">
-                        <div class="i">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="div">
-                            <h5>Password</h5>
-                            <input id="input-password" name="password" type="password" class="input input-password">
-                        </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
                     </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        <input id="input-password" name="password" type="password" class="input input-password">
+                    </div>
+                </div>
 
-                    <a href="#">Forgot Password?</a>
+                <a href="#">Forgot Password?</a>
 
-                    <input id="login" type="submit" class="btn login" value="login">
+                <input id="login" type="submit" class="btn login" value="login">
 
-                    <a href="doctor_dashboard.php?id='99999'" class="btn login guest-login">Login as Guest</a>
-                </form>
-
-            </div>
+                <a href="doctor_dashboard.php?id='99999'" class="btn login guest-login">Login as Guest</a>
+            </form>
 
         </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
+        </div>
+
+        <div>
+
+            <h1>Contact Us</h1>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
+
+            </div=>
+
+    </footer>
 
 </body>
 

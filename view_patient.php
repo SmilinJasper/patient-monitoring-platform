@@ -24,7 +24,7 @@ $patient_age = $patient_age[0];
 $total_patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
 $total_patient_medications_prescribed = mysqli_fetch_array($total_patient_medications_prescribed);
 
-$total_patient_medications_prescribed = $total_patient_medications_prescribed[0]; 
+$total_patient_medications_prescribed = $total_patient_medications_prescribed[0];
 
 if ($patient_bmi < 16) $bmi_style = "bmi-severely-underweight";
 if ($patient_bmi < 17) $bmi_style = "bmi-underweight";
@@ -167,7 +167,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
         <form method="POST" action="add_medicines.php" class="patient-medicine-info-container">
 
             <div class="table-responsive medicine-table-container">
-            
+
                 <table class="styled-table">
                     <thead>
                         <tr>
@@ -182,53 +182,53 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                     </thead>
                     <tbody id="medicine-table-body">
 
-                    <?php
+                        <?php
 
-                    //Display all patient info from database
+                        //Display all patient info from database
 
-                    while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result)) {
 
-                        echo "
+                            echo "
                                 <tr>
                                     <td>" . $row['id'] . "</td>
                                     <td>" . $row['medicine'] . "</td>
                                     <td>
                                         <div class='table-icon-container'>"
-                                        . (($row['morning']) == true
-                                        ? ($row['morning'] == 'Taken'
+                                . (($row['morning']) == true
+                                    ? ($row['morning'] == 'Taken'
                                         ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
                                         : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                         </div>
                                     </td>
                 
                                     <td>
                                         <div class='table-icon-container'>"
-                                        . (($row['afternoon']) == true
-                                        ? ($row['afternoon'] == 'Taken'
+                                . (($row['afternoon']) == true
+                                    ? ($row['afternoon'] == 'Taken'
                                         ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
                                         : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                         </div>
                                     </td>
 
                                     <td>
                                         <div class='table-icon-container'>"
-                                        . (($row['evening']) == true
-                                        ? ($row['evening'] == 'Taken'
+                                . (($row['evening']) == true
+                                    ? ($row['evening'] == 'Taken'
                                         ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
                                         : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                         </div>
                                     </td>
 
                                     <td>
                                         <div class='table-icon-container'>"
-                                        . (($row['night']) == true
-                                        ? ($row['night'] == 'Taken'
+                                . (($row['night']) == true
+                                    ? ($row['night'] == 'Taken'
                                         ? "<img class='ui-icon' src='img/check-mark-tick-green.png' alt='Prescribed'"
                                         : "<img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Not prescribed'>")
-                                        : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
+                                    : "<img class='ui-icon' src='img/check-mark-wrong.png' alt='Not prescribed'>")  . "
                                         </div>
                                     </td>
                 
@@ -237,7 +237,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                         <div class='table-icon-container'>
                                             <form action='delete_medicine.php' method='POST'>
 
-                                                <input type='number' value='". $row['id'] ."' id='medicine-id' name='medicine-id' readonly hidden>
+                                                <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
                                                 
                                                 <input type='image' class='ui-icon-big' src='img/bin-icon.png'>
                                                 
@@ -249,23 +249,23 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                 </tr>
                 
                             ";
-                    }
+                        }
 
-                    ?>
+                        ?>
 
                         <!-- Template for adding new medicines -->
                         <template id="new-medicine-row-template">
 
-                            <?php 
-                            
-                             //Get the next medicine id from database
-                             $sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'patient_medicines' AND table_schema = DATABASE( )";
-                             $result = mysqli_query($conn, $sql);
-                             $row = mysqli_fetch_array($result);
-                             $new_medicine_id = $row['AUTO_INCREMENT'];
-                            
-                             // Close Connection
-                             mysqli_close($conn);
+                            <?php
+
+                            //Get the next medicine id from database
+                            $sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'patient_medicines' AND table_schema = DATABASE( )";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_array($result);
+                            $new_medicine_id = $row['AUTO_INCREMENT'];
+
+                            // Close Connection
+                            mysqli_close($conn);
 
                             ?>
                             <tr>
@@ -281,7 +281,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                 </td>
 
                                 <td>
-                                    <div class="table-icon-container"> 
+                                    <div class="table-icon-container">
                                         <input type="checkbox" name="to-take-morning" id="to-take-morning" value="Prescribed" class="ui-icon">
                                     </div>
                                 </td>
@@ -305,29 +305,62 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                 </td>
 
                                 <td></td>
-                                
+
                             </tr>
                         </template>
 
                     </tbody>
                 </table>
             </div>
-                
-                <div class="add-medicine-form">
-                   
-                    <input type='image' id="add-medicine-button" class='ui-icon-big' src='img/plus-button.png' alt='Add medicine'/>
-                   
-                    <input type='image' id="submit-medicine-list-button" class='ui-icon-big' src='img/check-mark-tick-green.png' alt='Submit medicines list'/>
 
-                    <?php echo "<input type='number' value='" . $patient_id ."' id='patient-id' name='patient-id' hidden readonly>"  ?>
+            <div class="add-medicine-form">
 
-                    <?php echo "<input type='number' value='" . $doctor_id ."' id='doctor-id' name='doctor-id' hidden readonly>"  ?>
+                <input type='image' id="add-medicine-button" class='ui-icon-big' src='img/plus-button.png' alt='Add medicine' />
 
-                </div>
+                <input type='image' id="submit-medicine-list-button" class='ui-icon-big' src='img/check-mark-tick-green.png' alt='Submit medicines list' />
 
-        </form>  
-            
+                <?php echo "<input type='number' value='" . $patient_id . "' id='patient-id' name='patient-id' hidden readonly>"  ?>
+
+                <?php echo "<input type='number' value='" . $doctor_id . "' id='doctor-id' name='doctor-id' hidden readonly>"  ?>
+
+            </div>
+
+        </form>
+
     </main>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
+        </div>
+
+        <div>
+
+            <h1>Contact Us</h1>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
+
+            </div=>
+
+    </footer>
+
 </body>
 
 </html>

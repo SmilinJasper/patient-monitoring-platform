@@ -22,7 +22,7 @@ $patient_age = $patient_age[0];
 
 $total_patient_medications_prescribed = mysqli_query($conn, "SELECT count(*) from patient_medicines where patient_id = '$patient_id'");
 $total_patient_medications_prescribed = mysqli_fetch_array($total_patient_medications_prescribed);
-$total_patient_medications_prescribed = $total_patient_medications_prescribed[0]; 
+$total_patient_medications_prescribed = $total_patient_medications_prescribed[0];
 
 if ($patient_bmi < 16) $bmi_style = "bmi-severely-underweight";
 if ($patient_bmi < 17) $bmi_style = "bmi-underweight";
@@ -44,21 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $medicine_id = $_POST['medicine-id'];
     $medicine_time = $_POST['medicine-time'];
     $patient_id = $_POST['patient-id'];
-    
-    if($medicine_taken == "Taken"){
-      $sql = "UPDATE patient_medicines SET $medicine_time = 'Taken' WHERE id = '$medicine_id'";
+
+    if ($medicine_taken == "Taken") {
+        $sql = "UPDATE patient_medicines SET $medicine_time = 'Taken' WHERE id = '$medicine_id'";
     } else {
-      $sql = "UPDATE patient_medicines SET $medicine_time = 'Prescribed' WHERE id = '$medicine_id'";
+        $sql = "UPDATE patient_medicines SET $medicine_time = 'Prescribed' WHERE id = '$medicine_id'";
     }
-    
+
     if ($conn->query($sql) === TRUE) {
         echo "<script>
             window.location.href = 'patient_dashboard.php?id=$patient_id';
             </script>";
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
- 
 }
 
 ?>
@@ -178,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--Table with patient's medicines info and edit options-->
 
         <div class="table-responsive">
-        
+
             <table class="styled-table medicine-table">
                 <thead>
                     <tr>
@@ -192,13 +191,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </thead>
                 <tbody id="medicine-table-body">
 
-                <?php
+                    <?php
 
-                //Display all patient info from database
+                    //Display all patient info from database
 
-                while ($row = mysqli_fetch_array($result)) {
+                    while ($row = mysqli_fetch_array($result)) {
 
-                    echo "
+                        echo "
                     <tr>
                         <td>" . $row['id'] . "</td>
                         <td>" . $row['medicine'] . "</td>
@@ -209,15 +208,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                                 <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
 
-                                . (($row['morning']) == true
+                            . (($row['morning']) == true
                                 ? ($row['morning'] == 'Taken'
-                                ? " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    ? " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
                                     <input type='checkbox' id='medicine-checkmark-morning-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    : " <label for='medicine-checkmark-morning-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
@@ -241,15 +240,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                                 <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
 
-                                . (($row['afternoon']) == true
+                            . (($row['afternoon']) == true
                                 ? ($row['afternoon'] == 'Taken'
-                                ? " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    ? " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
                                     <input type='checkbox' id='medicine-checkmark-afternoon-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    : " <label for='medicine-checkmark-afternoon-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
@@ -273,15 +272,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                                 <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
 
-                                . (($row['evening']) == true
+                            . (($row['evening']) == true
                                 ? ($row['evening'] == 'Taken'
-                                ? " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    ? " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
                                     <input type='checkbox' id='medicine-checkmark-evening-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    : " <label for='medicine-checkmark-evening-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
@@ -305,15 +304,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                                 <form action='mark_medicine.php' method='POST' class='mark-medicine-form'>"
 
-                                . (($row['night']) == true
+                            . (($row['night']) == true
                                 ? ($row['night'] == 'Taken'
-                                ? " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    ? " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-green.png' alt='Taken'>
                                     </label>
 
                                     <input type='checkbox' id='medicine-checkmark-night-" . $row['id'] . "' name='medicine-checkmark' class='medicine-checkmark' value='Taken' checked hidden>"
 
-                                : " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
+                                    : " <label for='medicine-checkmark-night-" . $row['id'] . "' class='medicine-checkmark-label'>
                                         <img class='ui-icon' src='img/check-mark-tick-blue.png' alt='Prescribed'>
                                     </label>
 
@@ -334,17 +333,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
     
                         ";
-                }
+                    }
 
-                mysqli_close($conn);
+                    mysqli_close($conn);
 
-                ?>
+                    ?>
 
                 </tbody>
             </table>
         </div>
-            
+
     </main>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
+        </div>
+
+        <div>
+
+            <h1>Contact Us</h1>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
+
+            </div=>
+
+    </footer>
+
 </body>
 
 </html>
