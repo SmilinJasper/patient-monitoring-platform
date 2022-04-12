@@ -27,53 +27,53 @@ $docotor_id = $_GET['id'];
             <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button>
             </li>
         </ul>
+    </nav>
+
+    <!--Background wave image-->
+    <img class="wave" src="img/wave.png">
+
+    <!-- Wrapper -->
+    <main class="page-wrapper">
+
+        <!--Paper evaluated message-->
+        <center>
+            <h1 style="color: #4B88E7;">Patient Added Successfully</h1>
+            <?php echo "<a href='doctor_dashboard.php?id=" . $docotor_id . "' class='button next-button'>NEXT</a>"; ?>
+        </center>
+
+    </main>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
+
         </div>
 
-        <!--Background wave image-->
-        <img class="wave" src="img/wave.png">
+        <div>
 
-        <!-- Wrapper -->
-        <main class="page-wrapper">
+            <h1>Contact Us</h1>
 
-            <!--Paper evaluated message-->
-            <center>
-                <h1 style="color: #4B88E7;">Patient Added Successfully</h1>
-                <?php echo "<a href='doctor_dashboard.php?id=" . $docotor_id . "' class='button next-button'>NEXT</a>"; ?>
-            </center>
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
 
-        </main>
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
 
-        <!-- Footer -->
+            </div=>
 
-        <footer>
-
-            <div>
-
-                <h1>OUR LOCATION</h1>
-                <div id="map"></div>
-
-            </div>
-
-            <div>
-
-                <h1>Contact Us</h1>
-
-                <p>
-                    <i class="fas fa-phone"></i>
-                    <span>+91-123-456-7890</span>
-                </p>
-
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    <span>1-8, 9th cross street,
-                        <br>Coimbatore,
-                        <br>Tamilnadu - 123456
-                    </span>
-                </p>
-
-                </div=>
-
-        </footer>
+    </footer>
 
 </body>
 
