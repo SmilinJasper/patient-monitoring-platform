@@ -733,7 +733,7 @@ footer {
     padding: 4em 18em;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background: #2e2e2e;
     color: hsl(0, 0%, 97%);
