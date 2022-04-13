@@ -34,7 +34,7 @@ function removeAccount($conn, $account_type, $id)
 
         if (mysqli_query($conn, $sql)) {
             // Redirect to doctor dashboard
-            header("Location: doctor_dashboard.php");
+            header("Location: ".$_SERVER['HTTP_REFERER']);
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

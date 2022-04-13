@@ -289,40 +289,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </div>
 
-        <!-- Footer -->
+    </div>
 
-        <footer>
+    <!-- Footer -->
 
-            <div>
+    <footer>
 
-                <h1>OUR LOCATION</h1>
-                <div id="map"></div>
+        <div>
 
-            </div>
+            <h1>OUR LOCATION</h1>
+            <div id="map"></div>
 
-            <div>
+        </div>
 
-                <h1>Contact Us</h1>
+        <div>
 
-                <p>
-                    <i class="fas fa-phone"></i>
-                    <span>+91-123-456-7890</span>
-                </p>
+            <h1>Contact Us</h1>
 
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    <span>1-8, 9th cross street,
-                        <br>Coimbatore,
-                        <br>Tamilnadu - 123456
-                    </span>
-                </p>
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+91-123-456-7890</span>
+            </p>
 
-                </div=>
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>1-8, 9th cross street,
+                    <br>Coimbatore,
+                    <br>Tamilnadu - 123456
+                </span>
+            </p>
 
-        </footer>
+        </div>
 
-        <!--Javascript-->
-        <script type="text/javascript" src="js/login_input_animation.js"></script>
+    </footer>
+
+    <!--Javascript-->
+    <script type="text/javascript" src="js/login_input_animation.js"></script>
 
 </body>
 
