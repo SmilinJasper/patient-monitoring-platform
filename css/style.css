@@ -744,10 +744,10 @@ div.bmi-value {
 
 footer {
     margin-top: 4em;
-    padding: 4em 18em;
+    padding: 4em 0em;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background: #2e2e2e;
     color: hsl(0, 0%, 97%);
@@ -765,6 +765,10 @@ footer p {
 
 footer i {
     margin-right: 5px;
+}
+
+footer:last-child {
+    margin-left: 2em;
 }
 
 
