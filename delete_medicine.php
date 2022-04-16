@@ -3,7 +3,7 @@
 // Get patient id of session
 
 session_start();
-$patient_id = $_SESSION['id'];
+$patient_id = $_POST['patient-id'];
 
 // Include database connection
 
