@@ -169,6 +169,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
             <div class="table-responsive medicine-table-container">
 
                 <table class="styled-table">
+                    
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -180,6 +181,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                             <th>Delete</th>
                         </tr>
                     </thead>
+
                     <tbody id="medicine-table-body">
 
                         <?php
@@ -192,6 +194,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                 <tr>
                                     <td>" . $row['id'] . "</td>
                                     <td>" . $row['medicine'] . "</td>
+
                                     <td>
                                         <div class='table-icon-container'>"
                                 . (($row['morning']) == true
@@ -235,13 +238,21 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                                     <td>
 
                                         <div class='table-icon-container'>
-                                            <form action='delete_medicine.php' method='POST'>
+
+                                            <!-- This form below is a hack to make the first form work !-->
+
+                                            <form></form>
+
+                                            <form action='delete_medicine.php' id='delete-medicine-form' method='POST'>
 
                                                 <input type='number' value='" . $row['id'] . "' id='medicine-id' name='medicine-id' readonly hidden>
+
+                                                <input type='number' value='" . $patient_id . "' id='patient-id' name='patient-id' readonly hidden>
                                                 
                                                 <input type='image' class='ui-icon-big' src='img/bin-icon.png'>
-                                                
+                                            
                                             </form>
+
                                         </div>
 
                                     </td>
@@ -310,7 +321,9 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                         </template>
 
                     </tbody>
+
                 </table>
+
             </div>
 
             <div class="add-medicine-form">
