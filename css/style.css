@@ -767,7 +767,7 @@ footer i {
     margin-right: 5px;
 }
 
-footer:last-child {
+footer div:last-child {
     margin-left: 2em;
 }
 
