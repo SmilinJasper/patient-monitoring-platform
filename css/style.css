@@ -585,6 +585,11 @@ div.basic-info-container header {
     border-bottom: dotted 1px;
 }
 
+#view-schedule-container {
+    display: block;
+    text-align: center;
+}
+
 div.patient-info-container {
     display: grid;
     grid-template-columns: 75% 25%;
@@ -768,7 +773,7 @@ footer i {
 }
 
 footer div:last-child {
-    margin-left: 2em;
+    margin-left: 4em;
 }
 
 
