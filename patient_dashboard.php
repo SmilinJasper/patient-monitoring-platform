@@ -347,6 +347,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </table>
         </div>
 
+        <template class="doctor-schedule-modal info-container">
+
+            <div>
+                <p>9:00 - 9:30 AM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>9:30 - 10:00 AM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>10:00 -10:30 AM:</p>
+                <p class='info-value free-time-slot'>Free</p>
+            </div>
+
+            <div>
+                <p>10:30 - 11:00 AM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>11:00 - 11:30 AM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>11:30 - 12:00 PM:</p>
+                <p class='info-value free-time-slot'>Free</p>
+            </div>
+
+            <div>
+                <p>12:00 - 12:30 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>12:30 - 1:00 PM:</p>
+                <p class='info-value free-time-slot'>Free</p>
+            </div>
+            
+            <div>
+                <p>1:00 - 1:30 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>1:30 - 2:00 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+            
+            <div>
+                <p>2:00 - 2:30 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>2:30 - 3:00 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>  
+            
+            <div>
+                <p>3:00 - 3:30 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>3:30 - 4:00 PM:</p>
+                <p class='info-value free-time-slot'>Free</p>
+            </div>
+            
+            <div>
+                <p>4:00 - 4:30 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+            <div>
+                <p>4:30 - 5:00 PM:</p>
+                <p class='info-value'>Occupied</p>
+            </div>
+
+        </template>
+        
     </main>
 
     <!-- Footer -->

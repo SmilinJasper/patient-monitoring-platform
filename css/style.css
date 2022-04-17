@@ -694,6 +694,10 @@ div.bmi-value {
     transition: linear 200ms;
 }
 
+.free-time-slot {
+    color: #1dcc88;
+}
+
 .add-medicine-form {
     display: flex;
     flex-direction: column;
