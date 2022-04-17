@@ -611,6 +611,28 @@ div.basic-info-container header {
     cursor: pointer;
 }
 
+.view-schedule-button:focus {
+    outline: 1px solid #d9d9d9;
+    color: hsl(0, 0%, 35%);
+    background-image: linear-gradient(90deg, hsl(0, 0%, 35%), hsl(0, 0%, 35%));
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+@supports selector(:focus-visible) {
+    .view-schedule-button:focus {
+        outline: none;
+    }
+    .view-schedule-button:focus-visible {
+        outline: 1px solid #d9d9d9;
+    }
+}
+
+.free-time-slot {
+    color: #1dcc88;
+}
+
 div.patient-info-container {
     display: grid;
     grid-template-columns: 75% 25%;
@@ -692,10 +714,6 @@ div.bmi-value {
     cursor: pointer;
     opacity: 93.5%;
     transition: linear 200ms;
-}
-
-.free-time-slot {
-    color: #1dcc88;
 }
 
 .add-medicine-form {
