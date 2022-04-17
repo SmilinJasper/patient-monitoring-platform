@@ -143,6 +143,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <a class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
                             </div>
 
+                            <div id='view-schedule-container'>
+                                <button class='view-schedule-button'>View Schedule</button>
+                            </div>
+                            
                         </div>
 
                         <!--Patient info-->

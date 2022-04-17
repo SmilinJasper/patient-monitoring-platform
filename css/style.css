@@ -582,12 +582,33 @@ div.basic-info-container header {
 
 .contact-number {
     color: #000000;
+    font-size: 1em;
     border-bottom: dotted 1px;
 }
 
 #view-schedule-container {
     display: block;
     text-align: center;
+}
+
+.view-schedule-button {
+    color: hsl(0, 0%, 20%);
+    background: transparent;
+    background-image: linear-gradient(90deg, #fff, #fff);
+    background-size: 15% 2px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    font-size: 16px;
+    transition: all 150ms ease;
+}
+
+.view-schedule-button:hover {
+    color: hsl(0, 0%, 35%);
+    background-image: linear-gradient(90deg, hsl(0, 0%, 35%), hsl(0, 0%, 35%));
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    cursor: pointer;
 }
 
 div.patient-info-container {
