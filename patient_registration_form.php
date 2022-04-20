@@ -98,11 +98,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient_blood_group = $_POST["patient-blood-group"];
         $patient_height = $_POST["patient-height"];
         $patient_weight = $_POST["patient-weight"];
+        $patient_tests_taken = $_POST["patient-tests-taken"];
         $patient_contact_number = $_POST["patient-contact-number"];
         $patient_bmi = round($patient_weight / ($patient_height / 100 * $patient_height / 100));
 
         // Save doctor profile details in the database
-        $sql = "INSERT INTO patient_profiles (id, doctor_id, name, date_of_birth, age, blood_group, height, weight, bmi, contact_number) VALUES ('$patient_id', '$doctor_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_contact_number')";
+        $sql = "INSERT INTO patient_profiles (id, doctor_id, name, date_of_birth, age, blood_group, height, weight, bmi, patient_tests_taken, contact_number) VALUES ('$patient_id', '$doctor_id', '$patient_name', '$patient_date_of_birth', '$patient_age', '$patient_blood_group', '$patient_height', '$patient_weight', '$patient_bmi', '$patient_tests_taken', '$patient_contact_number')";
 
         if (mysqli_query($conn, $sql)) {
             header("location: patient_added.php?id=" . $doctor_id);
@@ -268,6 +269,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h5>Weight (In KG)</h5>
                         </label>
                         <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3" required>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <label for="input-blood-group">
+                            <h5>Tests Taken</h5>
+                        </label>
+                        <input id="input-patient-tests-taken" name="patient-tests-taken" type="text" class="input" maxlength="512" required>
                     </div>
                 </div>
 
