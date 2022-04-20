@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script defer src="js/handle_medicine_checkmark.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src='js/notify.js'></script>
+    <script defer src='js/view_doctor_schedule.js'></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div id='view-schedule-container'>
-                                <button class='view-schedule-button'>View Schedule</button>
+                                <button id='view-schedule-button' class='view-schedule-button'>View Schedule</button>
                             </div>
                             
                         </div>
@@ -347,89 +348,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </table>
         </div>
 
-        <template class="doctor-schedule-modal info-container">
-
-            <div>
-                <p>9:00 - 9:30 AM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>9:30 - 10:00 AM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>10:00 -10:30 AM:</p>
-                <p class='info-value free-time-slot'>Free</p>
-            </div>
-
-            <div>
-                <p>10:30 - 11:00 AM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>11:00 - 11:30 AM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>11:30 - 12:00 PM:</p>
-                <p class='info-value free-time-slot'>Free</p>
-            </div>
-
-            <div>
-                <p>12:00 - 12:30 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>12:30 - 1:00 PM:</p>
-                <p class='info-value free-time-slot'>Free</p>
-            </div>
+        <div id="schedule-modal" class="schedule-modal">
+            <div id="schedule-modal-content" class="basic-info-container info-container schedule-modal-content" tabindex="-1">
+                <header>
+                    <h1>DOCTOR'S SCHEDULE</h1>
+                </header>
+                <div>
+                    <p>9:00 - 9:30 AM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>9:30 - 10:00 AM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>10:00 -10:30 AM:</p>
+                    <p class='info-value free-time-slot'>Free</p>
+                </div>
+                <div>
+                    <p>10:30 - 11:00 AM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>11:00 - 11:30 AM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>11:30 - 12:00 PM:</p>
+                    <p class='info-value free-time-slot'>Free</p>
+                </div>
+                <div>
+                    <p>12:00 - 12:30 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>12:30 - 1:00 PM:</p>
+                    <p class='info-value free-time-slot'>Free</p>
+                </div>
             
-            <div>
-                <p>1:00 - 1:30 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>1:30 - 2:00 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
+                <div>
+                    <p>1:00 - 1:30 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>1:30 - 2:00 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
             
-            <div>
-                <p>2:00 - 2:30 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>2:30 - 3:00 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>  
+                <div>
+                    <p>2:00 - 2:30 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>2:30 - 3:00 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
             
-            <div>
-                <p>3:00 - 3:30 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-            <div>
-                <p>3:30 - 4:00 PM:</p>
-                <p class='info-value free-time-slot'>Free</p>
-            </div>
+                <div>
+                    <p>3:00 - 3:30 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>3:30 - 4:00 PM:</p>
+                    <p class='info-value free-time-slot'>Free</p>
+                </div>
             
-            <div>
-                <p>4:00 - 4:30 PM:</p>
-                <p class='info-value'>Occupied</p>
+                <div>
+                    <p>4:00 - 4:30 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
+                <div>
+                    <p>4:30 - 5:00 PM:</p>
+                    <p class='info-value'>Occupied</p>
+                </div>
             </div>
-
-            <div>
-                <p>4:30 - 5:00 PM:</p>
-                <p class='info-value'>Occupied</p>
-            </div>
-
-        </template>
+        </div>
         
     </main>
 

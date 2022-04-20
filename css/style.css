@@ -533,18 +533,16 @@ input[type="file"] {
     margin-top: 10px;
 }
 
-div.basic-info-container {
-    margin: auto;
+.basic-info-container {
+    margin: 8px auto 0px auto;
     padding: 8px;
-    position: relative;
-    top: 8px;
     width: 310px;
     background: white;
     border-radius: 8px;
     box-shadow: 5px 5px 10px #dcdcdc;
 }
 
-div.basic-info-container header {
+.basic-info-container header {
     padding: 8px;
     background: #009879;
     color: white;
@@ -629,8 +627,26 @@ div.basic-info-container header {
     }
 }
 
+.schedule-modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.schedule-modal-content {
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 .free-time-slot {
-    color: #1dcc88;
+    color: #00604b;
+    text-transform: uppercase;
 }
 
 div.patient-info-container {
