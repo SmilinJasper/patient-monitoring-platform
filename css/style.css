@@ -715,7 +715,14 @@ div.bmi-value {
 .ui-icon:hover,
 .ui-icon:active {
     cursor: pointer;
-    opacity: 93.5%;
+    opacity: 90%;
+    transition: linear 200ms;
+}
+
+.ui-icon-big:hover,
+.ui-icon-big:active {
+    cursor: pointer;
+    opacity: 90%;
     transition: linear 200ms;
 }
 
@@ -723,13 +730,6 @@ div.bmi-value {
     height: 25px;
     border-radius: 50%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.ui-icon-big:hover,
-.ui-icon-big:active {
-    cursor: pointer;
-    opacity: 93.5%;
-    transition: linear 200ms;
 }
 
 .add-medicine-form {
