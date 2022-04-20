@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><button type="submit" formaction="logout_to_doctor_login.php">Doctor Login</button>
                 </li>
                 <li><button type="submit" formaction="logout_to_admin_login.php">Admin Login</button></li>
-                <li class="nav-item-right"><button type="submit" formaction="logout_to_doctor_login.php">Logout</button>
+                <li class="nav-item-right"><button type="submit" formaction="logout_to_patient_login.php">Logout</button>
                 </li>
             </ul>
         </form>
