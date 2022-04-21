@@ -22,7 +22,7 @@ $notifList = $conn->query($sql);
 foreach ($notifList as $key) {
     $data['title'] = $key['title'];
     $data['msg'] = $key['message'];
-    $data['icon'] = 'img/notification.png';
+    $data['icon'] = 'img/notification-icon.png';
 
     if ($key['to_user_type'] == 'doctor') {
         $data['url'] = 'view_patient.php?id=' . $key['patient_id'] . '&doctor_id=' . $key['doctor_id'];
