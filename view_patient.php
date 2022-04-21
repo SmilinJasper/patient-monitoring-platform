@@ -79,81 +79,86 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
             <h1>Patient Info</h1>
         </header>
 
-        <!--Patient info-->
-        <div class="basic-info-container">
+        <div class="editable-basic-info-container">
 
-            <header>
-                <h1>YOUR PATIENT</h1>
-            </header>
+            <div class="basic-info-container">
 
-            <!-- Display patient info from database -->
-            <?php
-            $sql = "SELECT * FROM patient_profiles WHERE id = '$patient_id'";
-            $result = mysqli_query($conn, $sql);
+                <header>
+                    <h1>YOUR PATIENT</h1>
+                </header>
 
-            while ($row = mysqli_fetch_array($result)) {
-                echo
-                "<!--Patient info-->
+                <!-- Display patient info from database -->
+                <?php
+                $sql = "SELECT * FROM patient_profiles WHERE id = '$patient_id'";
+                $result = mysqli_query($conn, $sql);
 
-                        <div class='info-container'>
-                            <div>
-                                <p>Name:</p>
-                                <p class='info-value'>" . $row['name'] . "</p>
+                while ($row = mysqli_fetch_array($result)) {
+                    echo
+                    "<!--Patient info-->
+
+                            <div class='info-container'>
+                                <div>
+                                    <label for='input-name'>Name:</label>
+                                    <input  id='input-name' name='patient-name' type='text' class='info-value editable-info-value' value='" . $row['name'] . "' disabled>
+                                </div>
+
+                                <div>
+                                    <p>Age:</p>
+                                    <p class='info-value'>" . $row['age'] . "<p>
+                                </div>
+
+                                <div>
+                                    <p>Date of Birth:</p>
+                                    <input type='date' class='info-value'>" . $row['date_of_birth'] . "</input>
+                                </div>
+
+                                <div>
+                                    <p>Blood Group:</p>
+                                    <p class='info-value'>" . $row['blood_group'] . "</p>
+                                </div>
+
+                                <div>
+                                    <p>Height:</p>
+                                    <p class='info-value'>" . $row['height'] . " cm</p>
+                                </div>
+
+                                <div>
+                                    <p>Weight:</p>
+                                    <p class='info-value'>" . $row['weight'] . " kg</p>
+                                </div>
+
+                                <div>
+                                    <p>Tests Taken:</p>
+                                    <input type='text' class='info-value editable-info-value' value='" . $row['tests_taken'] . "' disabled>
+                                </div>
+
+                                <div>
+                                    <p>Contact No:</p>
+                                    <a class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
+                                    </p>
+                                </div>
                             </div>
 
-                            <div>
-                                <p>Age:</p>
-                                <p class='info-value'>" . $row['age'] . "<p>
-                            </div>
+                            <!--Extra patient info-->
+                            <div class='patient-info-container'>
+                                <div class='medications-prescribed-count'>
+                                    <p>Medications Prescribed</p>
+                                    <p>
+                                        " . $total_patient_medications_prescribed . "
+                                    </p>
+                                </div>
+                                <div class='bmi-value'>
+                                    <p>BMI</p>
+                                    <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
+                                </div>
+                            </div>";
+                }
 
-                            <div>
-                                <p>Date of Birth:</p>
-                                <p class='info-value'>" . $row['date_of_birth'] . "</p>
-                            </div>
+                ?>
 
-                            <div>
-                                <p>Blood Group:</p>
-                                <p class='info-value'>" . $row['blood_group'] . "</p>
-                            </div>
+            </div>
 
-                            <div>
-                                <p>Height:</p>
-                                <p class='info-value'>" . $row['height'] . " cm</p>
-                            </div>
-
-                            <div>
-                                <p>Weight:</p>
-                                <p class='info-value'>" . $row['weight'] . " kg</p>
-                            </div>
-
-                            <div>
-                                <p>Tests Taken:</p>
-                                <p class='info-value'>" . $row['tests_taken'] . "</p>
-                            </div>
-
-                            <div>
-                                <p>Contact No:</p>
-                                <a class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!--Extra patient info-->
-                        <div class='patient-info-container'>
-                            <div class='medications-prescribed-count'>
-                                <p>Medications Prescribed</p>
-                                <p>
-                                    " . $total_patient_medications_prescribed . "
-                                </p>
-                            </div>
-                            <div class='bmi-value'>
-                                <p>BMI</p>
-                                <p class='" . $bmi_style . "'>" . $row['bmi'] . "</p>
-                            </div>
-                        </div>";
-            }
-
-            ?>
+        <input type="image" src="img/edit-icon.svg" class="edit-button"></input>
 
         </div>
 

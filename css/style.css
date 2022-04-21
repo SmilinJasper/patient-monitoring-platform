@@ -533,8 +533,14 @@ input[type="file"] {
     margin-top: 10px;
 }
 
+.editable-basic-info-container {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
 .basic-info-container {
-    margin: 8px auto 0px auto;
+    margin: 8px 16px 0 0;
     padding: 8px;
     width: 310px;
     background: white;
@@ -576,6 +582,13 @@ input[type="file"] {
     border: none;
     outline: none;
     background: transparent;
+}
+
+.editable-info-value {
+    width: 50%;
+    height: inherit;
+    color: #000000;
+    font-size: 1em;
 }
 
 .contact-number {
@@ -657,7 +670,7 @@ div.patient-info-container {
 
 div.medications-prescribed-count {
     padding: 8px;
-    background: aliceblue;
+    background: #D7E6FA;
 }
 
 div.bmi-value {
@@ -687,6 +700,14 @@ div.bmi-value {
 
 .bmi-morbidly-obese {
     color: #8a0101;
+}
+
+.edit-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #faebd7;
+    padding: 3px;
 }
 
 .patient-medicine-info-container {
