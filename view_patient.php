@@ -47,6 +47,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="js/update_page.js"></script>
     <script defer src="js/add_medicine.js"></script>
+    <script defer src="js/update_patient_details.js"></script>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,6 +93,9 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
                 $sql = "SELECT * FROM patient_profiles WHERE id = '$patient_id'";
                 $result = mysqli_query($conn, $sql);
 
+                $today = new DateTime("now", new DateTimeZone('Asia/Calcutta'));
+                $today = $today->format('Y-m-d');
+
                 while ($row = mysqli_fetch_array($result)) {
                     echo
                     "<!--Patient info-->
@@ -104,37 +108,39 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
                                 <div>
                                     <p>Age:</p>
-                                    <p class='info-value'>" . $row['age'] . "<p>
+                                    <p id='patient-age' class='info-value'>" . $row['age'] . "<p>
                                 </div>
 
                                 <div>
-                                    <p>Date of Birth:</p>
-                                    <input type='date' class='info-value'>" . $row['date_of_birth'] . "</input>
+                                    <label for='input-date-of-birth'>Date of Birth:</label>
+                                    <input id='input-date-of-birth' name='patient-date-of-birth' class='info-value editable-info-value' type='date' min='1900-01-01' max='$today' required value='" . $row['date_of_birth'] . "' disabled>
                                 </div>
 
                                 <div>
-                                    <p>Blood Group:</p>
-                                    <p class='info-value'>" . $row['blood_group'] . "</p>
+                                    <label for='input-blood-group'>Blood Group:</label>
+                                    <input id='input-blood-group' name='patient-blood-group' class='info-value editable-info-value' type='text' maxlength='3' required value='" . $row['blood_group'] . "' disabled>
                                 </div>
 
                                 <div>
-                                    <p>Height:</p>
-                                    <p class='info-value'>" . $row['height'] . " cm</p>
+                                    <label for='input-date-of-birth'>Height:</label>
+                                    <input id='input-height' name='patient-height' class='info-value editable-info-value' type='number' min='10' minlength='2' maxlength='3' size='3'> value='" . $row['height'] . "' disabled>
+                                    <p>cm</p>
                                 </div>
 
                                 <div>
-                                    <p>Weight:</p>
-                                    <p class='info-value'>" . $row['weight'] . " kg</p>
+                                    <label for='input-weight'>Weight:</label>
+                                    <input id='input-weight' name='patient-weight' class='info-value editable-info-value' type='number' min='10' minlength='1' maxlength='3' size='3' required value='" . $row['weight'] . "' disabled>
+                                    <p>kg</p>
                                 </div>
 
                                 <div>
-                                    <p>Tests Taken:</p>
-                                    <input type='text' class='info-value editable-info-value' value='" . $row['tests_taken'] . "' disabled>
+                                    <label for='input-tests-taken'>Tests Taken:</label>
+                                    <input id='input-tests-taken' name='input-tests-taken' class='info-value editable-info-value' type='text' required value='" . $row['tests_taken'] . "' disabled>
                                 </div>
 
                                 <div>
                                     <p>Contact No:</p>
-                                    <a class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
+                                    <a id='contact-number' class='contact-number info-value' href=tel:" . $row['contact_number'] . ">" . $row['contact_number'] . "</a>
                                     </p>
                                 </div>
                             </div>
