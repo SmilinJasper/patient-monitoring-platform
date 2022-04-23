@@ -256,7 +256,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-height">
                             <h5>Height (In CM)</h5>
                         </label>
-                        <input id="input-height" name="patient-height" type="number" class="input" min="1" maxlength="3" required>
+                        <input id="input-height" name="patient-height" type="number" class="input" min='10' minlength="2" maxlength="3" required>
                     </div>
                 </div>
 
@@ -268,7 +268,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="input-weight">
                             <h5>Weight (In KG)</h5>
                         </label>
-                        <input id="input-weight" name="patient-weight" type="number" class="input" min="1" maxlength="3" required>
+                        <input id="input-weight" name="patient-weight" type="number" class="input" min='10' minlength="2" maxlength="3" required>
                     </div>
                 </div>
 
