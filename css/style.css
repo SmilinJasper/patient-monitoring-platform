@@ -585,7 +585,7 @@ input[type="file"] {
 }
 
 .editable-info-value {
-    width: 50%;
+    width: 100%;
     height: inherit;
     color: #000000;
     font-size: 1em;

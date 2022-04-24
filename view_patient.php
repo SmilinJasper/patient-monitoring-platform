@@ -123,14 +123,12 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
                                 <div>
                                     <label for='input-date-of-birth'>Height:</label>
-                                    <input id='input-height' name='patient-height' class='info-value editable-info-value' type='number' min='10' minlength='2' maxlength='3' size='3'> value='" . $row['height'] . "' disabled>
-                                    <p>cm</p>
+                                    <input id='input-height' name='patient-height' class='info-value editable-info-value' type='text' value='" . $row['height'] . " cm' disabled>
                                 </div>
 
                                 <div>
                                     <label for='input-weight'>Weight:</label>
-                                    <input id='input-weight' name='patient-weight' class='info-value editable-info-value' type='number' min='10' minlength='1' maxlength='3' size='3' required value='" . $row['weight'] . "' disabled>
-                                    <p>kg</p>
+                                    <input id='input-weight' name='patient-weight' class='info-value editable-info-value' type='text' required value='" . $row['weight'] . " kg' disabled>
                                 </div>
 
                                 <div>
@@ -164,7 +162,7 @@ if ($patient_bmi > 40) $bmi_style = "bmi-morbidly-obese";
 
             </div>
 
-        <input type="image" src="img/edit-icon.svg" class="edit-button"></input>
+        <input id="edit-button" type="image" src="img/edit-icon.svg" class="edit-button"></input>
 
         </div>
 
